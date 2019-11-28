@@ -1,0 +1,95 @@
+{{ form_start(form, {'attr': {'class': '',
+						 'novalidate': 'novalidate'
+						} 
+}) }}
+
+
+<div class="form-row col justify-content-around">
+	<div class="col-5 border border-black p-0">
+		<div class="col border border-black text-center p-0 mb-2">
+			<div class="bg-secondary m-0 text-white-50"><h2 class="h5 m-0">{{ "title.nonPensioner" | trans }}</h2></div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.oneMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.oneMemberMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.oneMemberHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.twoMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.twoMemberMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.twoMemberHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.threeOrMoreMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.threeOrMoreMemberMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.threeOrMoreMemberHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+	</div>
+	<div class="col-5 border border-black p-0">
+		<div class="col border border-black text-center p-0 mb-2">
+			<div class="bg-secondary m-0 text-white-50"><h2 class="h5 m-0">{{ "title.pensioner" | trans }}</h2></div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.oneMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.oneMemberPensionerMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.oneMemberPensionerHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.twoMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.twoMemberPensionerMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.twoMemberPensionerHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+		<div class="border border-black ml-1 mb-1 mr-1 mt-0 ">
+			<div class="border border-black text-center bg-light m-0">
+				<h2 class="h5">{{ "title.threeOrMoreMember" | trans }}</h2>
+			</div>
+			<div class="form-row p-1 justify-content-around">
+				{{ form_row(form.threeOrMoreMemberPensionerMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+				{{ form_row(form.threeOrMoreMemberPensionerHeritageMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row justify-content-around mt-2">
+	<div class="col-5 border border-black p-0">
+		<div class="border border-black text-center bg-light">
+			<h2 class="h4">{{ "title.perHour" | trans }}</h2>
+		</div>
+		<div class="form-row form-group p-3 justify-content-around">
+			{{ form_row(form.minimumPricePerHour, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+			{{ form_row(form.maximumPricePerHour, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+		</div>
+	</div>
+</div>
+
+<div class="row justify-content-center mt-2">
+	<button id="btnSave" class="btn btn-primary" type="submit">{{ "btn.save" | trans }}</button>
+	<button class="btn btn-primary ml-2 js-back" type="button" data-url="{{ path('default') }}">{{ "btn.cancel" | trans }}</button>
+</div>
+<!-- Token CSRF -->
+{{ form_widget(form._token) }}
+{{ form_end(form, {'render_rest': false, 
+				   'attr': {'class': '',
+			       } 
+}) }}

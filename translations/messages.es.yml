@@ -1,0 +1,155 @@
+########################################################
+# General
+########################################################
+
+link.logout: "Salir"
+
+messages.appTitle: "Etxez-Etxe"
+alt.logo: "Logo de Amorebieta-Etxano"
+alt.seal: "Sello de Amorebieta-Etxano"
+
+########################################################
+# Tablas
+########################################################
+
+table.options: "Opciones"
+
+########################################################
+# Botones
+########################################################
+
+btn.new: "Nuevo"
+btn.search: "Buscar"
+btn.save: "Guardar"
+btn.cancel: "Cancelar"
+btn.print: "Imprimir"
+
+########################################################
+# Menu
+########################################################
+
+navitem.expedient: "Expedientes"
+navitem.expedient.new: "Nuevo"
+navitem.expedient.list: "Listado"
+navitem.deductions: "Deducciones"
+navitem.rgi: "RGI"
+
+########################################################
+# Entidades
+########################################################
+
+
+########################################################
+# Deducciones
+########################################################
+
+deduction.title: "Parámetros Deducciones"
+title.dependency: "Dependencia"
+deduction.dependencyPercentage: "Porcentaje dependencia"
+deduction.dependencyMaximum: "Máximo dependencia"
+title.rental: "Alquiler"
+deduction.rentalPercentage: "Porcentaje alquiler"
+deduction.rentalMaximum: "Máximo alquiler"
+title.mortgage: "Hipoteca"
+deduction.mortgagePercentage: "Porcentaje hipoteca"
+deduction.mortgageMaximum: "Máximo hipoteca"
+title.pricePerHour: "Precio por hora"
+deduction.realPricePerHour: "Precio real por hora"
+deduction.maximumPricePerHour: "Precio máximo por hora"
+
+########################################################
+# RGI
+########################################################
+
+rgi.title: "Parámetros RGI"
+title.nonPensioner: "No pensionistas"
+title.pensioner: "Pensionistas"
+title.oneMember: "Un miembro"
+rgi.oneMemberMaximum: "Máximo"
+rgi.oneMemberHeritageMaximum: "Patrimonio máximo"
+rgi.oneMemberPensionerMaximum: "Máximo"
+rgi.oneMemberHeritagePensionerMaximum: "Patrimonio máximo"
+title.twoMember: "Dos miembros"
+rgi.twoMemberMaximum: "Máximo"
+rgi.twoMemberHeritageMaximum: "Patrimonio máximo"
+rgi.twoMemberPensionerMaximum: "Máximo"
+rgi.twoMemberPensionerHeritageMaximum: "Patrimonio máximo"
+title.threeOrMoreMember: "3 o más miembros"
+rgi.threeOrMoreMemberMaximum: "Máximo"
+rgi.threeOrMoreMemberHeritageMaximum: "Patrimonio máximo"
+rgi.threeOrMoreMemberPensionerMaximum: "Máximo"
+rgi.threeOrMoreMemberPensionerHeritageMaximum: "Patrimonio máximo"
+title.perHour: "Por Hora"
+rgi.maximumPricePerHour: "Precio hora máximo"
+rgi.minimumPricePerHour: "Precio hora mínimo"
+
+########################################################
+# Expendientes
+########################################################
+
+title.expedientTitlePDF: "Expediente"
+title.newExpedient: "Nuevo Expediente"
+title.expedientList: "Búsqueda de expedientes"
+title.expedientPrincipal: "Titular"
+title.members: "Miembros"
+title.bonifications: "Bonificaciones"
+title.incomes: "Ingresos"
+title.calculations: "Cálculos"
+title.search: "Búsqueda"
+expedient.id: "Id"
+expedient.dni: "DNI"
+expedient.name: "Nombre"
+expedient.surname1: "Primer apellido"
+expedient.surname2: "Segundo apellido"
+expedient.incomeAndAid: "Renta-ayudas"
+expedient.professionalIncome: "Profesionales"
+expedient.capitalIncome: "Capital"
+expedient.pensioner: "Pensionista"
+expedient.heritage: "Patrimonio"
+expedient.equityIncrease: "Incremento patrimonio"
+expedient.rentExpense: "Gasto alquiler"
+expedient.mortgageExpense: "Gasto hipoteca"
+expedient.dependencyBonus: "Dependencia"
+expedient.rentBonus: "Renta"
+expedient.mortgageBonus: "Hipoteca"
+expedient.rawIncome: "Brutos"
+expedient.netIncome: "Netos"
+expedient.numberOfHours: "Nº de horas"
+expedient.monthlyContribution: "Aportación mes"
+expedient.pricePerHour: "Precio por hora"
+expedient.createDate: "Fecha creación"
+expedient.createdBy: "Creado por"
+expedient.fromDate: "Desde"
+expedient.lastModificationDate: "Fecha modificación"
+expedient.modifiedBy: "Modificado por"
+expedient.toDate: "Hasta"
+messages.noMembers: "No hay miembros"
+
+########################################################
+# Miembros
+########################################################
+member.dni: "DNI"
+member.name: "Nombre"
+member.surname1: "Primer apellido"
+member.surname2: "Segundo apellido"
+member.incomeAndAid: "Ing. rentas y ayudas"
+member.professionalIncome: "Ing. profesionales"
+member.capitalIncome: "Rend. capital"
+member.dependency: "Dependencia"
+member.dependencyAmount: "Ing. depen."
+member.numberOfHours: "Nº horas"
+
+########################################################
+# Mensajes
+########################################################
+
+messages.deleteMember: "Eliminar"
+messages.expedientSaved: "El expediente se ha guardado correctamente"
+messages.confirmacion: "Confirmación"
+messages.confirmationDetail: "¿Esta seguro de que desea eliminar el registro?"
+messages.results0: "No se han encontrado resultados"
+messages.si: "Sí"
+messages.no: "No"
+messages.eliminarRegistroDni: "Va a eliminarse el registro con DNI: %dni%"
+messages.hours: "horas"
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('build/images/favicon.ico') }}" />
+		<style>
+			html {
+				margin: 0;
+			}
+			body {
+				font-family: "Times New Roman", serif;
+				margin: 45mm 8mm 2mm 8mm;
+				height: 100%;
+			}
+			table {
+				font-size: 8px;
+			}
+			th {
+				font-weight: bold;
+			}
+			.logo {
+				height: 90px;
+				width: auto;
+			}
+			.seal {
+				height: 90px;
+				width: auto;
+				margin-top: 100px;
+			}
+			.text-center {
+				text-align: center;
+			}
+			.text-right {
+				text-align: right;
+			}
+			.text-uppercase {
+				text-transform: uppercase;
+			}
+		</style>
+		</head>
+		<body id="content">
+		<main>
+		{% block header %}{% endblock %}
+		{% block body %}{% endblock %}
+		</main>
+		{% block oharra %}{% endblock %}
+    </body>
+</html>

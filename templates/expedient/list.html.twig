@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{'title.expedientList' | trans }}{% endblock %}
+
+{% block body %}
+    <main class="container-fluid" >
+	
+		{% include '/expedient/_searchForm.html.twig' %}
+	
+		<div class="container-fluid">
+			<table id="taula" class="table bootstrap-table mt-3">
+			<thead>
+				<tr>
+				<th data-sortable="true">{{"expedient.id" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.dni" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.name" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.surname1" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.surname2" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.createDate" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.createdBy" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.lastModificationDate" | trans | capitalize}}</th>
+				<th data-sortable="true">{{"expedient.modifiedBy" | trans | capitalize}}</th>
+				<th data-sortable="true" data-field="options">{{"table.options" | trans | capitalize}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% if expedients is defined and expedients|length > 0 %}
+				{% for expedient in expedients %}
+				<tr>
+					<td>{{expedient.id}}</td>
+					<td>{{expedient.dni}}</td>
+					<td>{{expedient.name}}</td>
+					<td>{{expedient.surname1}}</td>
+					<td>{{expedient.surname2}}</td>
+					<td>{{expedient.createDate | date("Y/m/d h:m:s")}}</td>
+					<td>{{expedient.createdBy.username}}</td>
+					
+					<td>
+						{% if expedient.modifiedBy is not empty %}
+							{{expedient.lastModificationDate | date("Y/m/d h:m:s")}}
+						{% endif %}
+					</td>
+					<td>
+						{% if expedient.modifiedBy is not empty %}
+							{{expedient.modifiedBy.username}}	
+						{% endif %}
+						</td>
+					<td>
+					<a href="{{ path ("expedient_show",{'expedient': expedient.id })}}"><i class="fa fa-eye"></i></a>
+					&nbsp;<a href="{{ path ("expedient_edit",{'expedient': expedient.id })}}"><i class="fa fa-edit"></i></a>
+					&nbsp;<a class="js-delete" href="#" 
+							 data-url="{{ path ('expedient_delete',{'expedient': expedient.id })}}"><i class="fa fa-trash"></i></a>
+					</td>
+				</tr>
+				{% endfor %}
+				{% else %}
+				<tr><td colspan="4">{{"messages.results0" | trans }}</td></tr>
+				{% endif %}
+			</tbody>
+			</table>
+			<span class="pull-right"><a href="{{ path ('expedient_new') }}" class="btn btn-primary btn-rounded fixed-bottom-right"><i class="fa fa-plus" title='{{ "btn.new" | trans | capitalize }}'></i></a></span>
+		</div>
+    </main>
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('expedient_list') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('expedient_list') }}
+{% endblock %}

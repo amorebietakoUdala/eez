@@ -1,0 +1,120 @@
+@import '~bootstrap/scss/bootstrap'; 
+@import '~font-awesome';
+
+/*$acceVerde: green;
+$acceAzul: #396696;
+
+h1 {
+    color: $acceVerde;
+
+    s {
+        color: $acceAzul;
+    }
+}*/
+
+body {
+    padding: 0.1em 0.1em 0.1em 0.1em;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 150px auto 200px 100px;
+    grid-template-areas: "logo titulo erabiltzailea idioma";
+    justify-content: space-beetween;
+    text-align: center;
+    align-items: center;
+}
+
+main {
+	font-size: 0.9rem;
+    width: 100vw;
+}
+
+.logo {
+    height: 100px;
+    width: auto;
+}
+
+.titulua {
+    display: flex;
+    text-align: center;
+}
+
+.avatar {
+    float: right;
+    height: 3rem;
+    border-radius: 3rem;
+}
+
+.fixed-bottom-right {
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+}
+
+.flex-row-nowrap {
+    display: flex;
+    flex: row nowrap;
+}
+
+.flex-align-items-center {
+    align-items: center;
+}
+.flex-align-items-end {
+    align-items: flex-end;
+}
+
+.margin-left-auto {
+    margin-left: auto;
+}
+
+.bootstrap-table {
+    font-size: 0.8rem;
+}
+
+.btn-rounded {
+    border-radius: 1.1rem 1.1rem 1.1rem 1.1rem;
+}
+
+.select2-container .select2-selection--single {
+	min-height: 32px;
+	border: 1px solid #ced4da;
+}
+
+.select2-container .select2-selection--multiple {
+	min-height: 32px;
+	border: 1px solid #ced4da;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border: 1px solid #ced4da;
+    outline: 0;
+	
+}
+
+.select2-container--default.select2-container--focus {
+	color: #495057;
+	background-color: #fff;
+	border-color: #80bdff;
+	outline: 0;
+	box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	border-radius: 0.2rem;
+}
+
+.form-group {
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 767px) {
+	.logo {
+		height: 50px;
+		width: auto;
+	}
+	
+	h1 {
+		font-size: 1.5rem;
+	}
+  
+}
