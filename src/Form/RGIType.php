@@ -77,10 +77,10 @@ class RGIType extends AbstractType
                 ],
                 'label' => 'rgi.maximumPricePerHour',
             ])
-            ->add('minimumPricePerHour', null, [
+            ->add('minimumPricePerMonth', null, [
                 'constraints' => [
                 ],
-                'label' => 'rgi.minimumPricePerHour',
+                'label' => 'rgi.minimumPricePerMonth',
             ])
         ;
     }

@@ -1,4 +1,4 @@
-import '../../scss/expedient/edit.scss';
+import '../../scss/quota/edit.scss';
 
 import $ from 'jquery';
 
@@ -32,14 +32,23 @@ $(document).ready(function(){
     
     $('#btnSave').on('click',function (e) {
         console.log('saveButtonClicked!');
-        document.expedient.submit();
+        console.log(e.currentTarget, $(e.currentTarget).data("url"));
+        $(document.quota).attr('action', $(e.currentTarget).data("url"));
+        document.quota.submit();
+    });
+
+    $('#btnCalculate').on('click',function (e) {
+        console.log('calculateButtonClicked!');
+        console.log(e.currentTarget, $(e.currentTarget).data("url"));
+        $(document.quota).attr('action', $(e.currentTarget).data("url"));
+        document.quota.submit();
     });
 
     $(document).on('click','.js-print',function(e){
         e.preventDefault();
         console.log(e.currentTarget, $(e.currentTarget).data("url"));
-        $(document.expedient).attr('action', $(e.currentTarget).data("url"));
-        document.expedient.submit();
+        $(document.quota).attr('action', $(e.currentTarget).data("url"));
+        document.quota.submit();
     });
     
 });

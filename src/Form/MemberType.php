@@ -60,49 +60,19 @@ class MemberType extends AbstractType
                     'class' => 'form-control-sm',
                 ],
             ])
-            ->add('professionalIncome', null, [
+            ->add('heritage', null, [
                 'constraints' => [
                     new NotBlank(),
                 ],
-                'label' => 'member.professionalIncome',
+                'label' => 'member.heritage',
                 'attr' => [
                     'class' => 'form-control-sm',
                 ],
             ])
-            ->add('capitalIncome', null, [
-                'constraints' => [
-                    new NotBlank(),
-                ],
-                'label' => 'member.capitalIncome',
-                'attr' => [
-                    'class' => 'form-control-sm',
-                ],
-            ])
-            ->add('dependency', null, [
+            ->add('discapacity65', null, [
                 'constraints' => [
                 ],
-                'label' => 'member.dependency',
-                'attr' => [
-                    'class' => 'form-control-sm',
-                ],
-            ])
-            ->add('dependencyAmount', null, [
-                'constraints' => [
-                    new NotBlank(),
-                ],
-                'label' => 'member.dependencyAmount',
-                'attr' => [
-                    'class' => 'form-control-sm',
-                ],
-            ])
-            ->add('numberOfHours', null, [
-                'constraints' => [
-                    new NotBlank(),
-                ],
-                'label' => 'member.numberOfHours',
-                'attr' => [
-                    'class' => 'form-control-sm',
-                ],
+                'label' => 'quota.discapacity65',
             ])
         ;
     }

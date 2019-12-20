@@ -1,4 +1,4 @@
-import '../../scss/expedient/list.scss';
+import '../../scss/quota/list.scss';
 
 import $ from 'jquery';
 import 'bootstrap-table';
@@ -59,6 +59,6 @@ $(document).ready(function(){
     $(document).on('click','#btnSearch',function(e){
         e.preventDefault();
         console.log(e.currentTarget);
-        document.expedient_search.submit();
+        document.quota_search.submit();
     });
 });

@@ -55,38 +55,18 @@ class Member
      * @Assert\NotBlank
      * @Assert\PositiveOrZero
      */
-    private $professionalIncome;
+    private $heritage;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank
-     * @Assert\PositiveOrZero
+     * @ORM\Column(type="boolean", options={"default" : 0})
      */
-    private $capitalIncome;
+    private $discapacity65;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\ManyToOne(targetEntity="Quota", inversedBy="members")
+     * @ORM\JoinColumn(name="quota_id", referencedColumnName="id")
      */
-    private $dependency;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero
-     */
-    private $dependencyAmount;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank
-     * @Assert\PositiveOrZero
-     */
-    private $numberOfHours;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Expedient", inversedBy="members")
-     * @ORM\JoinColumn(name="expedient_id", referencedColumnName="id")
-     */
-    private $expedient;
+    private $quota;
 
     public function getId(): ?int
     {
@@ -153,74 +133,38 @@ class Member
         return $this;
     }
 
-    public function getProfessionalIncome(): ?string
+    public function getQuota(): Quota
     {
-        return $this->professionalIncome;
+        return $this->quota;
     }
 
-    public function setProfessionalIncome(string $professionalIncome): self
+    public function setQuota(Quota $quota)
     {
-        $this->professionalIncome = $professionalIncome;
+        $this->quota = $quota;
 
         return $this;
     }
 
-    public function getDependency(): ?bool
+    public function getDiscapacity65()
     {
-        return $this->dependency;
+        return $this->discapacity65;
     }
 
-    public function setDependency(bool $dependency): self
+    public function setDiscapacity65($discapacity65)
     {
-        $this->dependency = $dependency;
+        $this->discapacity65 = $discapacity65;
 
         return $this;
     }
 
-    public function getDependencyAmount(): ?string
+    public function getHeritage()
     {
-        return $this->dependencyAmount;
+        return $this->heritage;
     }
 
-    public function setDependencyAmount(string $dependencyAmount): self
+    public function setHeritage($heritage)
     {
-        $this->dependencyAmount = $dependencyAmount;
-
-        return $this;
-    }
-
-    public function getNumberOfHours(): ?string
-    {
-        return $this->numberOfHours;
-    }
-
-    public function setNumberOfHours(string $numberOfHours): self
-    {
-        $this->numberOfHours = $numberOfHours;
-
-        return $this;
-    }
-
-    public function getExpedient(): Expedient
-    {
-        return $this->expedient;
-    }
-
-    public function setExpedient($expedient): self
-    {
-        $this->expedient = $expedient;
-
-        return $this;
-    }
-
-    public function getCapitalIncome(): ?string
-    {
-        return $this->capitalIncome;
-    }
-
-    public function setCapitalIncome($capitalIncome): self
-    {
-        $this->capitalIncome = $capitalIncome;
+        $this->heritage = $heritage;
 
         return $this;
     }

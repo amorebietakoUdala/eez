@@ -84,7 +84,7 @@ class RGI
     /**
      * @ORM\Column(type="decimal", precision=12, scale=2)
      */
-    private $minimumPricePerHour;
+    private $minimumPricePerMonth;
 
     public function getId(): ?int
     {
@@ -211,14 +211,14 @@ class RGI
         return $this;
     }
 
-    public function getMinimumPricePerHour(): ?string
+    public function getMinimumPricePerMonth(): ?string
     {
-        return $this->minimumPricePerHour;
+        return $this->minimumPricePerMonth;
     }
 
-    public function setMinimumPricePerHour(string $minimumPricePerHour): self
+    public function setMinimumPricePerMonth(string $minimumPricePerMonth): self
     {
-        $this->minimumPricePerHour = $minimumPricePerHour;
+        $this->minimumPricePerMonth = $minimumPricePerMonth;
 
         return $this;
     }
@@ -257,5 +257,41 @@ class RGI
         $this->threeOrMoreMemberPensionerHeritageMaximum = $threeOrMoreMemberPensionerHeritageMaximum;
 
         return $this;
+    }
+
+    public function getCurrentBasicRent($members, $pensioner): ?float
+    {
+        if ($pensioner) {
+            switch ($members) {
+            case 1:
+                $basicRent = $this->oneMemberPensionerMaximum;
+                break;
+            case 2:
+                $basicRent = $this->twoMemberPensionerMaximum;
+                break;
+            default:
+                $basicRent = $this->threeOrMoreMemberPensionerMaximum;
+                break;
+            }
+        } else {
+            switch ($members) {
+            case 1:
+                $basicRent = $this->oneMemberMaximum;
+                break;
+            case 2:
+                $basicRent = $this->twoMemberMaximum;
+                break;
+            default:
+                $basicRent = $this->threeOrMoreMemberMaximum;
+                break;
+            }
+        }
+
+        return $basicRent;
+    }
+
+    public function getCurrentMinimumPricePerHour()
+    {
+        return $this->minimumPricePerMonth / 22;
     }
 }

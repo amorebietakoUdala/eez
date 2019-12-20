@@ -2,12 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\Expedient;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ExpedientSearchType extends AbstractType
+class QuotaSearchType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -15,37 +14,37 @@ class ExpedientSearchType extends AbstractType
             ->add('dni', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.dni',
+                'label' => 'quota.dni',
             ])
             ->add('name', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.name',
+                'label' => 'quota.name',
             ])
             ->add('surname1', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.surname1',
+                'label' => 'quota.surname1',
             ])
             ->add('surname2', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.surname2',
+                'label' => 'quota.surname2',
             ])
             ->add('pensioner', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.pensioner',
+                'label' => 'quota.pensioner',
             ])
             ->add('fromDate', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.fromDate',
+                'label' => 'quota.fromDate',
             ])
             ->add('toDate', null, [
                 'constraints' => [
                 ],
-                'label' => 'expedient.toDate',
+                'label' => 'quota.toDate',
             ])
             ;
     }

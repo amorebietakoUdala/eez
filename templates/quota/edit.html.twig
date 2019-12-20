@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'title.newQuota' | trans }}{% endblock %}
+
+{% block body %}
+	<main>
+		{{ include ('/quota/_form.html.twig', {'readonly': readonly}) }}
+	</main>
+{% endblock %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('quota_edit') }}
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+	{{ encore_entry_script_tags('quota_edit') }}
+{% endblock %}

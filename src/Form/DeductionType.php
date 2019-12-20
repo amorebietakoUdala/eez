@@ -11,45 +11,25 @@ class DeductionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dependencyPercentage', null, [
+            ->add('dependencyMinimum', null, [
                 'constraints' => [
                 ],
-                'label' => 'deduction.dependencyPercentage',
+                'label' => 'deduction.dependencyMinimum',
             ])
             ->add('dependencyMaximum', null, [
                 'constraints' => [
                 ],
                 'label' => 'deduction.dependencyMaximum',
             ])
-            ->add('rentalPercentage', null, [
+            ->add('housingPercentage', null, [
                 'constraints' => [
                 ],
-                'label' => 'deduction.rentalPercentage',
+                'label' => 'deduction.housingPercentage',
             ])
-            ->add('rentalMaximum', null, [
+            ->add('housingMaximum', null, [
                 'constraints' => [
                 ],
-                'label' => 'deduction.rentalMaximum',
-            ])
-            ->add('mortgagePercentage', null, [
-                'constraints' => [
-                ],
-                'label' => 'deduction.mortgagePercentage',
-            ])
-            ->add('mortgageMaximum', null, [
-                'constraints' => [
-                ],
-                'label' => 'deduction.mortgageMaximum',
-            ])
-            ->add('realPricePerHour', null, [
-                'constraints' => [
-                ],
-                'label' => 'deduction.realPricePerHour',
-            ])
-            ->add('maximumPricePerHour', null, [
-                'constraints' => [
-                ],
-                'label' => 'deduction.maximumPricePerHour',
+                'label' => 'deduction.housingMaximum',
             ])
         ;
     }

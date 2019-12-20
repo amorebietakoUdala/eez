@@ -22,7 +22,7 @@ class Deduction
      * @Assert\PositiveOrZero
      * @Assert\NotBlank
      */
-    private $dependencyPercentage;
+    private $dependencyMinimum;
 
     /**
      * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
@@ -36,56 +36,28 @@ class Deduction
      * @Assert\PositiveOrZero
      * @Assert\NotBlank
      */
-    private $rentalPercentage;
+    private $housingPercentage;
 
     /**
      * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
      * @Assert\PositiveOrZero
      * @Assert\NotBlank
      */
-    private $rentalMaximum;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $mortgagePercentage;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $mortgageMaximum;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $realPricePerHour;
-
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $maximumPricePerHour;
+    private $housingMaximum;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getDependencyPercentage(): ?string
+    public function getDependencyMinimum(): ?string
     {
-        return $this->dependencyPercentage;
+        return $this->dependencyMinimum;
     }
 
-    public function setDependencyPercentage(?string $dependencyPercentage): self
+    public function setDependencyMinimum($dependencyMinimum): self
     {
-        $this->dependencyPercentage = $dependencyPercentage;
+        $this->dependencyMinimum = $dependencyMinimum;
 
         return $this;
     }
@@ -102,75 +74,51 @@ class Deduction
         return $this;
     }
 
-    public function getRentalPercentage(): ?string
+    public function getHousingPercentage(): ?string
     {
-        return $this->rentalPercentage;
+        return $this->housingPercentage;
     }
 
-    public function setRentalPercentage(?string $rentalPercentage): self
+    public function setHousingPercentage(?string $housingPercentage): self
     {
-        $this->rentalPercentage = $rentalPercentage;
+        $this->housingPercentage = $housingPercentage;
 
         return $this;
     }
 
-    public function getRentalMaximum(): ?string
+    public function getHousingMaximum(): ?string
     {
-        return $this->rentalMaximum;
+        return $this->housingMaximum;
     }
 
-    public function setRentalMaximum(?string $rentalMaximum): self
+    public function setHousingMaximum(?string $housingMaximum): self
     {
-        $this->rentalMaximum = $rentalMaximum;
+        $this->housingMaximum = $housingMaximum;
 
         return $this;
     }
 
-    public function getMortgagePercentage(): ?string
+    public function getCurrentDependencyBonus($dependencyGrade, $discapacity65)
     {
-        return $this->mortgagePercentage;
+        if (3 === $dependencyGrade || $discapacity65) {
+            $dependencyBonus = $this->dependencyMaximum;
+        } else {
+            $dependencyBonus = $this->dependencyMinimum;
+        }
+
+        return $dependencyBonus;
     }
 
-    public function setMortgagePercentage(?string $mortgagePercentage): self
+    public function getCurrentHousingBonus($housingExpediture)
     {
-        $this->mortgagePercentage = $mortgagePercentage;
-
-        return $this;
-    }
-
-    public function getMortgageMaximum(): ?string
-    {
-        return $this->mortgageMaximum;
-    }
-
-    public function setMortgageMaximum(?string $mortgageMaximum): self
-    {
-        $this->mortgageMaximum = $mortgageMaximum;
-
-        return $this;
-    }
-
-    public function getRealPricePerHour(): ?string
-    {
-        return $this->realPricePerHour;
-    }
-
-    public function setRealPricePerHour(?string $realPricePerHour): self
-    {
-        $this->realPricePerHour = $realPricePerHour;
-
-        return $this;
-    }
-
-    public function getMaximumPricePerHour(): ?string
-    {
-        return $this->maximumPricePerHour;
-    }
-
-    public function setMaximumPricePerHour(?string $maximumPricePerHour): self
-    {
-        $this->maximumPricePerHour = $maximumPricePerHour;
-
-        return $this;
+        if (null === $housingExpediture || 0 === $housingExpediture) {
+            return 0;
+        }
+        $housingExpeditureBonus = $housingExpediture * $this->housingPercentage;
+        if ($housingExpeditureBonus > $this->housingMaximum) {
+            return $this->housingMaximum;
+        } else {
+            return $housingExpeditureBonus;
+        }
     }
 }

@@ -2,21 +2,21 @@
 
 namespace App\Repository;
 
-use App\Entity\Expedient;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use App\Entity\Quota;
 
 /**
- * @method Expedient|null find($id, $lockMode = null, $lockVersion = null)
- * @method Expedient|null findOneBy(array $criteria, array $orderBy = null)
- * @method Expedient[]    findAll()
- * @method Expedient[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Quota|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Quota|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Quota[]    findAll()
+ * @method Quota[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ExpedientRepository extends ServiceEntityRepository
+class QuotaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Expedient::class);
+        parent::__construct($registry, Quota::class);
     }
 
     // /**
@@ -41,12 +41,12 @@ class ExpedientRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('h');
         if (array_key_exists('fromDate', $criteria) && null !== $criteria['fromDate']) {
             $qb->andWhere('h.createDate >= :fromDate');
-            $qb->setParameter('fromDate', \DateTime::createFromFormat('Y-m-d', $criteria['fromDate']));
+            $qb->setParameter('fromDate', \DateTime::createFromFormat('Y-m-d H:i:s', $criteria['fromDate'].' 00:00:00'));
             unset($criteria['fromDate']);
         }
         if (array_key_exists('toDate', $criteria) && null !== $criteria['toDate']) {
             $qb->andWhere('h.createDate <= :toDate');
-            $qb->setParameter('toDate', \DateTime::createFromFormat('Y-m-d', $criteria['toDate']));
+            $qb->setParameter('toDate', \DateTime::createFromFormat('Y-m-d H:i:s', $criteria['toDate'].' 23:59:59'));
             unset($criteria['toDate']);
         }
         foreach ($this->__remove_blank_filters($criteria) as $key => $value) {

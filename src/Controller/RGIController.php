@@ -5,9 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Entity\RGI;
 use App\Form\RGIType;
 
+/**
+ * @Route("/{_locale}")
+ * @IsGranted("ROLE_USER")
+ */
 class RGIController extends AbstractController
 {
     /**

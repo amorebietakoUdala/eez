@@ -26,9 +26,9 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('deduction_edit', './assets/js/deduction/edit.js')
     .addEntry('rgi_edit', './assets/js/rgi/edit.js')
-    .addEntry('expedient_edit', './assets/js/expedient/edit.js')
-    .addEntry('expedient_list', './assets/js/expedient/list.js')
-    .addEntry('expedient_list_server', './assets/js/expedient/list_server.js')
+    .addEntry('quota_edit', './assets/js/quota/edit.js')
+    .addEntry('quota_list', './assets/js/quota/list.js')
+    .addEntry('quota_list_server', './assets/js/quota/list_server.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

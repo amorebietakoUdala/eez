@@ -1,4 +1,4 @@
-import '../../scss/expedient/list.scss';
+import '../../scss/quota/list.scss';
 
 import $ from 'jquery';
 import 'bootstrap-table';
