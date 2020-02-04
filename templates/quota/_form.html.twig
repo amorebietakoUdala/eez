@@ -24,6 +24,9 @@
 				<div class="col-1 form-group ml-1">
 					{{ form_row(memberForm.heritage, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
 				</div>
+				<div class="col-2 form-group">
+					{{ form_row(memberForm.dependencyGrade, {'attr': {'class': 'form-control form-control-sm'}}) }}
+				</div>
 				<div class="col form-check p-3">
 					{{ form_label(memberForm.discapacity65, {'attr': {'class': 'form-check-label'}}) }}
 					{{ form_widget(memberForm.discapacity65, {'attr': {'class': 'form-check-input'}}) }}

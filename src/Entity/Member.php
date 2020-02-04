@@ -58,6 +58,11 @@ class Member
     private $heritage;
 
     /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $dependencyGrade;
+
+    /**
      * @ORM\Column(type="boolean", options={"default" : 0})
      */
     private $discapacity65;
@@ -157,6 +162,18 @@ class Member
         return $this;
     }
 
+    public function getDependencyGrade()
+    {
+        return $this->dependencyGrade;
+    }
+
+    public function setDependencyGrade($dependencyGrade)
+    {
+        $this->dependencyGrade = $dependencyGrade;
+
+        return $this;
+    }
+
     public function getHeritage()
     {
         return $this->heritage;
@@ -167,5 +184,14 @@ class Member
         $this->heritage = $heritage;
 
         return $this;
+    }
+
+    public function isDependant()
+    {
+        if (3 === $this->dependencyGrade || $this->discapacity65) {
+            return true;
+        }
+
+        return false;
     }
 }

@@ -98,12 +98,21 @@ class Deduction
         return $this;
     }
 
-    public function getCurrentDependencyBonus($dependencyGrade, $discapacity65)
+    public function getCurrentDependencyBonus($dependencyGrade, $discapacity65, $members)
     {
+        $numberOfDependants = 0;
+        $dependencyBonus = 0;
         if (3 === $dependencyGrade || $discapacity65) {
-            $dependencyBonus = $this->dependencyMaximum;
-        } else {
             $dependencyBonus = $this->dependencyMinimum;
+            $numberOfDependants += 1;
+        }
+        foreach ($members as $member) {
+            if ($member->isDependant()) {
+                $numberOfDependants += 1;
+            }
+        }
+        if ($numberOfDependants >= 2) {
+            $dependencyBonus = $this->dependencyMaximum;
         }
 
         return $dependencyBonus;
@@ -114,7 +123,7 @@ class Deduction
         if (null === $housingExpediture || 0 === $housingExpediture) {
             return 0;
         }
-        $housingExpeditureBonus = $housingExpediture * $this->housingPercentage;
+        $housingExpeditureBonus = $housingExpediture * 12 * $this->housingPercentage / 100;
         if ($housingExpeditureBonus > $this->housingMaximum) {
             return $this->housingMaximum;
         } else {

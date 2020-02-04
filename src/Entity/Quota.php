@@ -505,7 +505,11 @@ class Quota
             }
         }
 
-        return $this->getTotalHeritage() - $heritageMaximum;
+        if ($this->getTotalHeritage() - $heritageMaximum < 0) {
+            return 0;
+        } else {
+            return $this->getTotalHeritage() - $heritageMaximum;
+        }
     }
 
     public function getTotalHouseholdIncome(): ?float
@@ -531,9 +535,9 @@ class Quota
         return $this->getTotalHouseholdIncome();
     }
 
-    public function setBonuses(Deduction $deduction)
+    public function setBonuses(Deduction $deduction, $members)
     {
-        $this->setDependencyBonus($deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65));
+        $this->setDependencyBonus($deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65, $members));
         $this->setHousingBonus($deduction->getCurrentHousingBonus($this->housingExpediture));
     }
 
@@ -542,29 +546,35 @@ class Quota
         $monthlyIncome =
             ($this->calculateTotalHouseholdIncome()
             + $this->equityIncrease
-            - $deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65)
+            - $deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65, $this->members)
             - $deduction->getCurrentHousingBonus($this->housingExpediture)) / 12;
 
         $rest = $monthlyIncome - $rgi->getCurrentBasicRent($this->getMemberCount(), $this->pensioner);
-        $r = $rest * 10 / 100;
+        $r = $rest * 15 / 100;
 
         return $r;
     }
 
     public function calculateMonthlyContribution(Deduction $deduction, RGI $rgi)
     {
-        return $monthlyContribution = $this->calculateR($deduction, $rgi) * 1 + ($this->numberOfHours / 100);
+        $monthlyContribution = $this->calculateR($deduction, $rgi) * (1 + ($this->numberOfHours / 100));
+        if ($monthlyContribution < $rgi->getCurrentMinimumPricePerMonth()) {
+            return $rgi->getCurrentMinimumPricePerMonth();
+        } else {
+            return $monthlyContribution;
+        }
+
+        return $monthlyContribution;
     }
 
     public function calculatePricePerHour(Deduction $deduction, RGI $rgi)
     {
         $pricePerHour = $this->calculateMonthlyContribution($deduction, $rgi) / $this->numberOfHours;
-        if ($pricePerHour < $rgi->getCurrentMinimumPricePerHour()) {
-            return $rgi->getCurrentMinimumPricePerHour();
-        } elseif ($pricePerHour > $rgi->getMaximumPricePerHour()) {
+
+        if ($pricePerHour >= $rgi->getMaximumPricePerHour()) {
             return $rgi->getMaximumPricePerHour();
-        } else {
-            return $pricePerHour;
         }
+
+        return $pricePerHour;
     }
 }

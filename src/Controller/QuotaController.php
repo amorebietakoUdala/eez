@@ -302,7 +302,7 @@ class QuotaController extends AbstractController
 
     public function __calculateQuota(Quota $quota, RGI $rgi, Deduction $deduction)
     {
-        $quota->setBonuses($deduction);
+        $quota->setBonuses($deduction, $quota->getMembers());
         $quota->setTotalHouseholdIncome(
             round($quota->calculateTotalHouseholdIncome(), 2)
         );
