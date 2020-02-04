@@ -17,8 +17,8 @@ framework:
         
     translator: ~
 
-    templating:
-        engines: ['twig']
+#    templating:
+#        engines: ['twig']
 
     router:
         strict_requirements: ~

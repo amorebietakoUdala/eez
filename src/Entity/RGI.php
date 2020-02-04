@@ -294,4 +294,9 @@ class RGI
     {
         return $this->minimumPricePerMonth / 22;
     }
+
+    public function getCurrentMinimumPricePerMonth()
+    {
+        return $this->minimumPricePerMonth;
+    }
 }

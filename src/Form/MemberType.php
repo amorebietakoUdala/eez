@@ -3,11 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Member;
+use App\Validator\IsValidDNI;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use App\Validator\IsValidDNI;
 
 class MemberType extends AbstractType
 {
@@ -68,6 +69,15 @@ class MemberType extends AbstractType
                 'attr' => [
                     'class' => 'form-control-sm',
                 ],
+            ])
+            ->add('dependencyGrade', ChoiceType::class, [
+                'choices' => [
+                    'quota.dependencyGrade0' => null,
+                    'quota.dependencyGrade1' => 1,
+                    'quota.dependencyGrade2' => 2,
+                    'quota.dependencyGrade3' => 3,
+                ],
+                'label' => 'quota.dependencyGrade',
             ])
             ->add('discapacity65', null, [
                 'constraints' => [
