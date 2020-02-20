@@ -53,11 +53,13 @@ class QuotaType extends AbstractType
                 'constraints' => [
                 ],
                 'label' => 'quota.heritage',
+                'empty_data' => '0',
             ])
             ->add('housingExpediture', null, [
                 'constraints' => [
                 ],
                 'label' => 'quota.housingExpediture',
+                'empty_data' => '0',
             ])
             ->add('dependencyGrade', ChoiceType::class, [
                 'choices' => [

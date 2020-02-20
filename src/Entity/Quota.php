@@ -68,13 +68,13 @@ class Quota
     private $discapacity65;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
+     * @ORM\Column(type="decimal", precision=12, scale=2, options={"default" : 0})
      * @Assert\PositiveOrZero(groups={"saveQuota"})
      */
     private $heritage;
 
     /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
+     * @ORM\Column(type="decimal", precision=12, scale=2, options={"default" : 0})
      * @Assert\PositiveOrZero(groups={"saveQuota"})
      */
     private $totalHouseholdIncome;
