@@ -20,40 +20,40 @@ class Member
 
     /**
      * @ORM\Column(type="string", length=10, nullable=false)
-     * @Assert\NotBlank
-     * @IsValidDNI()
+     * @Assert\NotBlank(groups={"saveQuota"})
+     * @IsValidDNI(groups={"saveQuota"})
      */
     private $dni;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"saveQuota"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"saveQuota"})
      */
     private $surname1;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank
+     * @Assert\NotBlank(groups={"saveQuota"})
      */
     private $surname2;
 
     /**
      * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank
-     * @Assert\PositiveOrZero
+     * @Assert\NotBlank(groups={"saveQuota"})
+     * @Assert\PositiveOrZero(groups={"saveQuota"})
      */
     private $incomeAndAid;
 
     /**
      * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank
-     * @Assert\PositiveOrZero
+     * @Assert\NotBlank(groups={"saveQuota"})
+     * @Assert\PositiveOrZero(groups={"saveQuota"})
      */
     private $heritage;
 
