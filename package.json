@@ -17,6 +17,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "acorn": "^6.4.1",
         "bazinga-translator": "^2.6.6",
         "bootstrap": "^4.3.1",
         "bootstrap-datepicker": "^1.9.0",
@@ -24,6 +25,8 @@
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
         "font-awesome": "4",
         "jquery": "^3.4.1",
+        "kind-of": "^6.0.3",
+        "minimist": "^1.2.3",
         "moment": "^2.24.0",
         "moment-timezone": "0.4.0",
         "pc-bootstrap4-datetimepicker": "^4.17.50",
