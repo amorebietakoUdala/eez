@@ -22,6 +22,7 @@
         "bootstrap": "^4.3.1",
         "bootstrap-datepicker": "^1.9.0",
         "bootstrap-table": "^1.15.5",
+        "dot-prop": "^5.1.1",
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
         "font-awesome": "4",
         "jquery": "^3.5.0",
