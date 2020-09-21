@@ -4,7 +4,7 @@
         "core-js": "^3.0.0",
         "node-sass": "^4.13.1",
         "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^7.0.1",
+        "sass-loader": "^9.0.1",
         "terser-webpack-plugin": "^2.3.1",
         "webpack-dev-server": "^3.11.0",
         "webpack-notifier": "^1.6.0"
