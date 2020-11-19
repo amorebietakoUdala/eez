@@ -5,7 +5,7 @@
         "php": "^7.2.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "amorebietakoudala/user-bundle": "*@dev",
+        "amorebietakoudala/user-bundle": "^0.9.2",
         "friendsofsymfony/jsrouting-bundle": "^2.4",
         "qipsius/tcpdf-bundle": "^2.0",
         "sensio/framework-extra-bundle": "^5.5",
@@ -85,11 +85,5 @@
             "allow-contrib": false,
             "require": "5.*"
         }
-    },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../../bundles/user-bundle"
-        }
-    ]
+    }
 }
