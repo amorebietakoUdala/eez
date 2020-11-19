@@ -2,12 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Quota;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use App\Entity\Quota;
 
 class QuotaType extends AbstractType
 {
@@ -86,32 +87,32 @@ class QuotaType extends AbstractType
                 'expanded' => true,
 //                'label' => 'quota.sex',
             ])
-            ->add('housingBonus', null, [
+            ->add('housingBonus', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.housingBonus',
             ])
-            ->add('dependencyBonus', null, [
+            ->add('dependencyBonus', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.dependencyBonus',
             ])
-            ->add('totalHouseholdIncome', null, [
+            ->add('totalHouseholdIncome', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.totalHouseholdIncome',
             ])
-            ->add('equityIncrease', null, [
+            ->add('equityIncrease', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.equityIncrease',
             ])
-            ->add('monthlyContribution', null, [
+            ->add('monthlyContribution', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.monthlyContribution',
             ])
-            ->add('pricePerHour', null, [
+            ->add('pricePerHour', TextType::class, [
                 'constraints' => [
                 ],
                 'label' => 'quota.pricePerHour',
