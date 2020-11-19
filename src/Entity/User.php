@@ -1,17 +1,16 @@
 <?php
 
-// src/AppBundle/Entity/User.php
-
 namespace App\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use AMREU\UserBundle\Model\User as BaseUser;
+use AMREU\UserBundle\Model\UserInterface as AMREUserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="fos_user")
+ * @ORM\Table(name="user")
  */
-class User extends BaseUser
+class User extends BaseUser implements AMREUserInterface
 {
     /**
      * @ORM\Id
@@ -21,23 +20,38 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    protected $name;
+    protected $username;
 
-    public function __construct()
-    {
-        parent::__construct();
-        // your own logic
-    }
+    /**
+     * @ORM\Column(type="json")
+     */
+    protected $roles = [];
 
-    public function getName()
-    {
-        return $this->name;
-    }
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
+     */
+    protected $password;
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $email;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":"1"})
+     */
+    protected $activated;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    protected $lastLogin;
 }

@@ -12,11 +12,9 @@ return [
     Symfony\Bundle\MonologBundle\MonologBundle::class => ['all' => true],
     Symfony\Bundle\DebugBundle\DebugBundle::class => ['dev' => true, 'test' => true],
     Symfony\Bundle\MakerBundle\MakerBundle::class => ['dev' => true],
-    FOS\UserBundle\FOSUserBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
-    FR3D\LdapBundle\FR3DLdapBundle::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Bazinga\Bundle\JsTranslationBundle\BazingaJsTranslationBundle::class => ['all' => true],
-    WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle::class => ['all' => true],
-    WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle::class => ['all' => true],
+    AMREU\UserBundle\UserBundle::class => ['all' => true],
+    Qipsius\TCPDFBundle\QipsiusTCPDFBundle::class => ['all' => true],
 ];

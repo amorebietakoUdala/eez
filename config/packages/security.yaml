@@ -1,49 +1,49 @@
 security:
     
     erase_credentials: false
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
     encoders:
-        AcmeBundle\Acme\User\LdapUser: plaintext
-        FOS\UserBundle\Model\UserInterface: auto
+        legacy_bcrypt:
+            algorithm: bcrypt
+            
+        App\Entity\User:
+            algorithm: auto
+            migrate_from: 
+                - legacy_bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
 
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        chain_provider:
-            chain:
-               providers: [fos_userbundle, fr3d_ldapbundle]
-        fr3d_ldapbundle:
-            id: fr3d_ldap.security.user.provider
-        fos_userbundle:
-            id: fos_user.user_provider.username
+        # used to reload user from session & other features (e.g. switch_user)
+        amreu_user_provider:
+            entity:
+                class: App\Entity\User
+                property: username
 
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            provider: chain_provider
-            fr3d_ldap:  ~
+            anonymous: true
+            lazy: true
+            provider: amreu_user_provider
+
+            guard:
+                authenticators:
+                    - amreu.login.form.authenticator
+                entry_point: amreu.login.form.authenticator
+                
             form_login:
-                provider: chain_provider
-                csrf_token_generator: security.csrf.token_manager
-                always_use_default_target_path: true
-                login_path: fos_user_security_login
-                default_target_path: deduction
+                login_path: user_security_login_check
+                check_path: user_security_login_check
+                
             logout:
-                path: fos_user_security_logout
-            anonymous:  true
-            
-            # activate different ways to authenticate
+                path: user_security_logout
 
-            # http_basic: true
-            # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: true
-            # https://symfony.com/doc/current/security/form_login_setup.html
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used

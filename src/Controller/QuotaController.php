@@ -8,12 +8,12 @@ use App\Entity\RGI;
 use App\Form\QuotaSearchType;
 use App\Form\QuotaType;
 use DateTime;
+use Qipsius\TCPDFBundle\Controller\TCPDFController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
-use WhiteOctober\TCPDFBundle\Controller\TCPDFController;
 
 /**
  * @Route("/{_locale}")
