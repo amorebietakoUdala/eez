@@ -33,7 +33,7 @@
         "symfony/web-link": "5.*",
         "symfony/webpack-encore-bundle": "^1.7",
         "symfony/yaml": "5.*",
-        "willdurand/js-translation-bundle": "^3.0"
+        "willdurand/js-translation-bundle": "4.0.1"
     },
     "require-dev": {
         "symfony/debug-pack": "*",
