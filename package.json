@@ -28,13 +28,16 @@
         "eonasdan-bootstrap-datetimepicker": "^4.17.47",
         "font-awesome": "4",
         "http-proxy": "^1.18.1",
+        "is-svg": "^4.2.2",
         "jquery": "^3.5.0",
+        "jspdf": "^2.3.1",
         "kind-of": "^6.0.3",
         "lodash": "^4.17.19",
         "minimist": "^1.2.3",
         "moment": "^2.24.0",
         "moment-timezone": "0.4.0",
         "node-forge": "^0.10.0",
+        "node-notifier": "^8.0.1",
         "object-path": "^0.11.5",
         "pc-bootstrap4-datetimepicker": "^4.17.50",
         "popper.js": "^1.16.0",
@@ -42,7 +45,8 @@
         "serialize-javascript": "^3.1.0",
         "sweetalert2": "^9.3.16",
         "tableexport.jquery.plugin": "^1.10.10",
-        "websocket-extensions": "^0.1.4"
+        "websocket-extensions": "^0.1.4",
+        "xmldom": "^0.5.0"
     },
     "version": "0.0.0"
 }
