@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'deduction.title' | trans }}{% endblock %}
+{% block title %}
+	{{ 'deduction.title' | trans }}
+{% endblock %}
 
 {% block body %}
 	<main>
-		{% include '/deduction/_form.html.twig' %} 
+		{% include 'deduction/_form.html.twig' %}
 	</main>
 {% endblock %}
 

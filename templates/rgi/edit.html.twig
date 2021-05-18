@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'rgi.title' | trans }}{% endblock %}
+{% block title %}
+	{{ 'rgi.title' | trans }}
+{% endblock %}
 
 {% block body %}
 	<main>
-	{% include '/rgi/_form.html.twig' %} 
+		{% include 'rgi/_form.html.twig' %}
 	</main>
 {% endblock %}
 
