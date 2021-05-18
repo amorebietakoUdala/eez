@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ 'title.newQuota' | trans }}{% endblock %}
+{% block title %}
+	{{ 'title.newQuota' | trans }}
+{% endblock %}
 
 {% block body %}
 	<main>
-		{{ include ('/quota/_form.html.twig', {'readonly': readonly}) }}
+		{{ include ('quota/_form.html.twig', {'readonly': readonly}) }}
 	</main>
 {% endblock %}
 
