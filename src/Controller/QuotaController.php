@@ -84,19 +84,19 @@ class QuotaController extends AbstractController
         $quota = $form->getData();
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('quota/pdf.html.twig', [
-                    'quota' => $quota,
-                    'readonly' => true,
-                    'form' => $form->createView(),
-                ]);
+            'quota' => $quota,
+            'readonly' => true,
+            'form' => $form->createView(),
+        ]);
 
         $pdf = $pdfService->create(
-                'vertical',
-                PDF_UNIT,
-                PDF_PAGE_FORMAT,
-                true,
-                'UTF-8',
-                false
-            );
+            'vertical',
+            PDF_UNIT,
+            PDF_PAGE_FORMAT,
+            true,
+            'UTF-8',
+            false
+        );
         $pdf->SetMargins(PDF_MARGIN_LEFT, 5, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(0);
         $pdf->SetFooterMargin(0);
@@ -111,25 +111,25 @@ class QuotaController extends AbstractController
         $pdf->AddPage();
         $filename = 'quota';
         $pdf->writeHTMLCell(
-                $w = 0,
-                $h = 0,
-                $x = '',
-                $y = '',
-                $html,
-                $border = 0,
-                $ln = 1,
-                $fill = 0,
-                $reseth = false,
-                $align = '',
-                $autopadding = true
-            );
-        $pdf->Output($filename.'.pdf', 'D');
+            $w = 0,
+            $h = 0,
+            $x = '',
+            $y = '',
+            $html,
+            $border = 0,
+            $ln = 1,
+            $fill = 0,
+            $reseth = false,
+            $align = '',
+            $autopadding = true
+        );
+        $pdf->Output($filename . '.pdf', 'D');
 
         $form = $this->createForm(QuotaSearchType::class, new QuotaSearchType());
 
         return $this->render('quota/list.html.twig', [
-                'form' => $form->createView(),
-            ]);
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -210,7 +210,7 @@ class QuotaController extends AbstractController
                     'form' => $form->createView(),
                     'readonly' => false,
                     'new' => true,
-                    ]);
+                ]);
             }
 
             $calculatedQuota = $this->__calculateQuota($quota, $rgi, $deduction);
@@ -294,7 +294,7 @@ class QuotaController extends AbstractController
             $quotas = $result;
         }
 
-        return $this->render('/quota/list.html.twig', [
+        return $this->render('quota/list.html.twig', [
             'form' => $form->createView(),
             'quotas' => $quotas,
         ]);
