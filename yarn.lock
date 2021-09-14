@@ -5780,10 +5780,10 @@ sweetalert2@^9.3.16:
   resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
   integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-tableexport.jquery.plugin@^1.10.10:
-  version "1.10.20"
-  resolved "https://registry.yarnpkg.com/tableexport.jquery.plugin/-/tableexport.jquery.plugin-1.10.20.tgz#434ae6f8a8f09e5497de4378de833a9c571c36ae"
-  integrity sha512-cltEQSDLn6ljLXwCir6zUXAlfIYrgo6NJa5Vmznpka//efoZTJt3FZPJeOVweO/YefL1/1SH1qBxjROOspCifw==
+tableexport.jquery.plugin@1.10.21:
+  version "1.10.21"
+  resolved "https://registry.yarnpkg.com/tableexport.jquery.plugin/-/tableexport.jquery.plugin-1.10.21.tgz#193f2ad16344c4274250b0bf07abd338403aa95a"
+  integrity sha512-mLzuFmL1zo1hBjGqdG0Ico92LQOHo7AECHhe+GFyywdTBE6fWX93Ww9pKhWJW3MqzRghJYl4cEGz1a9KjppiUw==
   dependencies:
     es6-promise ">=4.2.4"
     file-saver ">=1.2.0"
