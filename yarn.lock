@@ -5189,11 +5189,15 @@ sweetalert2@^9.3.16:
   version "9.17.2"
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-9.17.2.tgz#7f33ce157a64c303d2ca98863c9a3f437e5f1187"
   integrity sha512-HkpPZVMYsnhFUBLdy/LvkU9snggKP3VAuSVnPhVXjxdg02lWbFx0W8H3m7A+WMWw2diXZS1wIa4m67XkNxdvew==
+"symbol-tree@>= 3.1.0 < 4.0.0":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/symbol-tree/-/symbol-tree-3.2.4.tgz#430637d248ba77e078883951fb9aa0eed7c63fa2"
+  integrity sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==
 
-tableexport.jquery.plugin@^1.10.10:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/tableexport.jquery.plugin/-/tableexport.jquery.plugin-1.20.0.tgz#a89ea5f592aba5165a57e2eb52879672b3eff502"
-  integrity sha512-B8BfbFLlXjYIFvqUv6sdavrqwpReGPS/hE2Xl/hdwTrtU/YstWZNZIM4w4g52J9lhXCpqZg+xwsV7MJV2lmmqA==
+tableexport.jquery.plugin@1.10.21:
+  version "1.10.21"
+  resolved "https://registry.yarnpkg.com/tableexport.jquery.plugin/-/tableexport.jquery.plugin-1.10.21.tgz#193f2ad16344c4274250b0bf07abd338403aa95a"
+  integrity sha512-mLzuFmL1zo1hBjGqdG0Ico92LQOHo7AECHhe+GFyywdTBE6fWX93Ww9pKhWJW3MqzRghJYl4cEGz1a9KjppiUw==
   dependencies:
     es6-promise ">=4.2.4"
     file-saver ">=2.0.1"
