@@ -1,6 +1,7 @@
 import '../../scss/quota/list.scss';
 
 import $ from 'jquery';
+global.jQuery = $;
 import 'bootstrap-table';
 import 'tableexport.jquery.plugin/tableExport';
 import 'bootstrap-table/dist/extensions/export/bootstrap-table-export'
