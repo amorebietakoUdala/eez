@@ -157,4 +157,5 @@ messages.noRGIParametersSet: "No se han definido parámetros RGI. No se puede ca
 messages.noDeductionParametersSet: "No se han definido deducciones. No se puede calcular"
 messages.numberOfHours0: "El número de horas no puede estar vacío o ser 0"
 messages.quotaSaved: "La cuota se ha guardado correctamente"
+messages.changesSaved: "Los cambios se han guardado correctamente"
 

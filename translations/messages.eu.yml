@@ -4,7 +4,9 @@
 
 link.logout: "Irten"
 
-messages.appTitle: "Etxez-Etxe"
+messages.appTitle: "Etxez-Etxeko Zerbitzua"
+alt.logo: "Amorebieta-Etxanoko logoa"
+alt.seal: "Amorebieta-Etxanoko zigilua"
 
 ########################################################
 # Tablas
@@ -16,13 +18,22 @@ table.options: "Aukerak"
 # Botones
 ########################################################
 
-# btn.new: "Nuevo"
+btn.new: "Berria"
+btn.search: "Bilatu"
+btn.save: "Gorde"
+btn.cancel: "Utzi"
+btn.print: "Imprimatu"
+btn.calculate: "Kalkulatu"
 
 ########################################################
 # Menu
 ########################################################
 
-# navitem.sendings: "Envíos"
+navitem.quota: "Kuotak"
+navitem.quota.new: "Berria"
+navitem.quota.list: "Zerrenda"
+navitem.deductions: "Dedukzioak"
+navitem.rgi: "DSBE"
 
 ########################################################
 # Entidades
@@ -30,15 +41,120 @@ table.options: "Aukerak"
 
 
 ########################################################
-# Paginas
+# Deducciones
 ########################################################
 
+deduction.title: "Dedukzio parametroak"
+title.dependency: "Dependentzia"
+deduction.dependencyMinimum: "Dependentzia minimoa"
+deduction.dependencyMaximum: "Dependentzia maximoa"
+title.housing: "Etxebizitza"
+deduction.housingPercentage: "Etxebizitza portzentaia"
+deduction.housingMaximum: "Etxebizitza maximoa"
+
+########################################################
+# RGI
+########################################################
+
+rgi.title: "DSBE Parametroak"
+title.nonPensioner: "Pentsiogabea"
+title.pensioner: "Pentsioduna"
+title.oneMember: "Kide bat"
+rgi.oneMemberMaximum: "Maximoa"
+rgi.oneMemberHeritageMaximum: "Ondare maximoa"
+rgi.oneMemberPensionerMaximum: "Maximoa"
+rgi.oneMemberHeritagePensionerMaximum: "Ondare maximoa"
+title.twoMember: "Bi kide"
+rgi.twoMemberMaximum: "Maximoa"
+rgi.twoMemberHeritageMaximum: "Ondare maximoa"
+rgi.twoMemberPensionerMaximum: "Maximoa"
+rgi.twoMemberPensionerHeritageMaximum: "Ondare maximoa"
+title.threeOrMoreMember: "3 kide edo gehiago"
+rgi.threeOrMoreMemberMaximum: "Maximoa"
+rgi.threeOrMoreMemberHeritageMaximum: "Ondare maximoa"
+rgi.threeOrMoreMemberPensionerMaximum: "Maximoa"
+rgi.threeOrMoreMemberPensionerHeritageMaximum: "Ondare maximoa"
+title.perHour: "Orduko"
+rgi.maximumPricePerHour: "Ordu prezio maximoa"
+rgi.minimumPricePerMonth: "Ordu prezio minimoa"
+
+########################################################
+# Expendientes
+########################################################
+
+title.quotaTitlePDF: "kuota"
+title.newQuota: "Kuota berria"
+title.quotaDetails: "Xehetasunak"
+title.quotaList: "Kuoten bilaketa"
+title.quotaPrincipal: "Titular"
+title.members: "Kideak"
+title.bonifications: "Hobariak"
+title.economicSituation: "Egoera ekonomikoa"
+title.calculations: "Kalkuluak"
+title.search: "Bilaketa"
+quota.id: "Id"
+quota.dni: "NAN"
+quota.name: "Izena"
+quota.surname1: "Lehenengo abizena"
+quota.surname2: "Bigarren abizena"
+quota.incomeAndAid: "Errenta-laguntzak"
+quota.professionalIncome: "Profesionalak"
+quota.capitalIncome: "Kapitala"
+quota.pensioner: "Pentsioduna"
+quota.heritage: "Ondarea"
+quota.equityIncrease: "Ondare gehikuntza"
+quota.housingExpediture: "Etxebizitza gastua"
+quota.dependencyGrade: "Mendekotasuna"
+quota.dependencyGrade0: ""
+quota.dependencyGrade1: "1. gradua"
+quota.dependencyGrade2: "2. gradua"
+quota.dependencyGrade3: "3. gradua"
+quota.discapacity65: "Desgaitasuna >=65%"
+quota.sexFemale: "Emakumea"
+quota.sexMale: "Gizona"
+quota.housingBonus: "Etxebizitza"
+quota.dependencyBonus: "Mendekotasuna"
+quota.numberOfHours: "Ordu kopurua"
+quota.monthlyContribution: "Hileko ekarpena"
+quota.totalHouseholdIncome: "Familia-unitatearen ingresuak"
+quota.pricePerHour: "Prezioa orduko"
+quota.createDate: "Sorrera data"
+quota.createdBy: "Sortzailea"
+quota.fromDate: "Noiztik"
+quota.lastModificationDate: "Aldatze data"
+quota.modifiedBy: "Nork aldatua"
+quota.toDate: "Nora"
+quota.sex: "Sexua"
+messages.noMembers: "Ez dago kiderik"
+
+########################################################
+# Miembros
+########################################################
+member.dni: "NAN"
+member.name: "Izena"
+member.surname1: "Lehen abizena"
+member.surname2: "Bigarren abizena"
+member.incomeAndAid: "Errenta eta laguntza ing."
+member.heritage: "Ondarea"
+member.discapacity65: "Desgaitasuna >=65%"
+member.numberOfHours: "Ordu kopurua"
 
 ########################################################
 # Mensajes
 ########################################################
 
-messages.confirmacion: "Konfirmazioa"
+messages.deleteMember: "Ezabatu"
+messages.confirmacion: "Konfirmatu"
+messages.confirmationDetail: "Ziur al zaude erregistroa ezabatu nahi duzula?"
 messages.results0: "Ez da emaitzarik aurkitu"
 messages.si: "Bai"
 messages.no: "Ez"
+messages.eliminarRegistroDni: "%dni% NAN-aren erregistroa ezabatuko da"
+messages.hours: "orduak"
+messages.existingPrincipal: "Titularra dagoeneko existitzen da. Ezin da berriz alta eman"
+messages.notSavedYet: "Ez gordea"
+messages.noRGIParametersSet: "DGSE parametroak definitu barik. Ezin da kalkulurik egin"
+messages.noDeductionParametersSet: "Dedukzio parametroak definitu barik. Ezin da kalkulurik egin"
+messages.numberOfHours0: "Ordu kopurua ezin da hutsik egon, ezta zero ere"
+messages.quotaSaved: "Kuota behar bezala gorde da"
+messages.changesSaved: "Aldaketak behar bezala gorde dira"

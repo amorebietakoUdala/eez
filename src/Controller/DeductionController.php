@@ -35,7 +35,7 @@ class DeductionController extends AbstractController
             $em->persist($data);
             $em->flush();
 
-            $this->redirectToRoute('deduction');
+            $this->addFlash('success', 'messages.changesSaved');
         }
 
         return $this->render('deduction/edit.html.twig', [

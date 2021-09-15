@@ -35,11 +35,11 @@ class RGIController extends AbstractController
             $em->persist($data);
             $em->flush();
 
-            $this->redirectToRoute('rgi');
+            $this->addFlash('success', 'messages.changesSaved');
         }
 
         return $this->render('rgi/edit.html.twig', [
-             'form' => $form->createView(),
-         ]);
+            'form' => $form->createView(),
+        ]);
     }
 }
