@@ -31,6 +31,7 @@
         "symfony/property-access": "5.*",
         "symfony/property-info": "5.*",
         "symfony/proxy-manager-bridge": "5.*",
+        "symfony/runtime": "5.*",
         "symfony/security-bundle": "5.*",
         "symfony/serializer": "5.*",
         "symfony/swiftmailer-bundle": "^3.1",
