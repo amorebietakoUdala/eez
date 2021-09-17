@@ -4,7 +4,7 @@ import '../../scss/quota/list.scss';
 // import $ from 'jquery';
 // global.jQuery = $;
 import 'bootstrap-table';
-import 'tableexport.jquery.plugin/tableExport';
+import 'tableexport.jquery.plugin';
 import 'bootstrap-table/dist/extensions/export/bootstrap-table-export'
 import 'bootstrap-table/dist/locale/bootstrap-table-es-ES';
 import 'bootstrap-table/dist/locale/bootstrap-table-eu-EU';
@@ -15,19 +15,21 @@ import 'eonasdan-bootstrap-datetimepicker';
 import 'pc-bootstrap4-datetimepicker';
 
 
-import {createConfirmationAlert} from '../common/alert';
+import {
+    createConfirmationAlert
+} from '../common/alert';
 const routes = require('../../../public/js/fos_js_routes.json');
 import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('.js-datetimepicker').datetimepicker({
-		format: 'YYYY-MM-DD',
-		sideBySide: false,
-		locale: $('html').attr('lang'),
-	});    
-    
+        format: 'YYYY-MM-DD',
+        sideBySide: false,
+        locale: $('html').attr('lang'),
+    });
+
     $('#taula').bootstrapTable({
-        cache : false,
+        cache: false,
         showExport: true,
         exportTypes: ['excel'],
         exportDataType: 'all',
@@ -41,10 +43,10 @@ $(document).ready(function(){
         striped: true,
         sortStable: true,
         pageSize: 10,
-        pageList: [10,25,50,100],
+        pageList: [10, 25, 50, 100],
         sortable: true,
-        locale: $('html').attr('lang')+'-'+$('html').attr('lang').toUpperCase()
-   });
+        locale: $('html').attr('lang') + '-' + $('html').attr('lang').toUpperCase()
+    });
     var $table = $('#taula');
     $(function () {
         $('#toolbar').find('select').change(function () {
@@ -53,12 +55,12 @@ $(document).ready(function(){
             });
         });
     });
-	$(document).on('click','.js-delete',function(e){
-		e.preventDefault();
-		var url = e.currentTarget.dataset.url;
-		createConfirmationAlert(url);
-	});
-    $(document).on('click','#btnSearch',function(e){
+    $(document).on('click', '.js-delete', function (e) {
+        e.preventDefault();
+        var url = e.currentTarget.dataset.url;
+        createConfirmationAlert(url);
+    });
+    $(document).on('click', '#btnSearch', function (e) {
         e.preventDefault();
         console.log(e.currentTarget);
         document.quota_search.submit();
