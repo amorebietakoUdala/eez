@@ -1,6 +1,6 @@
 user:
     class: 'App\Entity\User'
-    form_type: 'App\Form\UserType'
+    #form_type: 'AMREU\UserBundle\Form\UserType'
     domain: '%env(LDAP_ACCOUNTDOMAINNAME)%'
     ldap_users_dn: '%env(LDAP_USERS_DN)%'
     ldap_users_filter: '(&(objectclass=Person)(%env(LDAP_USERS_UUID)%={username}))'
