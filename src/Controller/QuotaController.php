@@ -12,6 +12,7 @@ use Qipsius\TCPDFBundle\Controller\TCPDFController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Security;
 
@@ -82,11 +83,18 @@ class QuotaController extends AbstractController
 
         $form->handleRequest($request);
         $quota = $form->getData();
+
+        $path = $this->getParameter('kernel.project_dir').'/assets/images/logo.jpg';
+        $type = pathinfo($path, PATHINFO_EXTENSION);
+        $data = file_get_contents($path);
+        $base64 = base64_encode($data);
+
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('quota/pdf.html.twig', [
             'quota' => $quota,
             'readonly' => true,
             'form' => $form->createView(),
+            'logo' => $base64,
         ]);
 
         $pdf = $pdfService->create(
@@ -108,6 +116,7 @@ class QuotaController extends AbstractController
         $pdf->setPrintFooter(true);
         $pdf->setFontSubsetting(true);
         $pdf->SetFont('helvetica', '', 11, '', true);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         $pdf->AddPage();
         $filename = 'quota';
         $pdf->writeHTMLCell(

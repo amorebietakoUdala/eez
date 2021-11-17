@@ -31,7 +31,8 @@
     <table>
 	<tr>
 		<td style="width: 30%">
-			<img class="logo" alt="{{ 'alt.logo' | trans }}" src="{{ absolute_url(asset('build/images/logo.jpg')) }}">
+			<img class="logo" width="84px" height="100px" alt="{{ 'alt.logo' | trans }}" src="@{{ logo }}">
+			{# <img class="logo" width="84px" height="100px" alt="{{ 'alt.logo' | trans }}" src="{{ absolute_url(asset('build/images/logo.jpg')) }}"> #}
 		</td>
 	    <td style="width: 70%;">
 			<h2>{{ 'title.quotaPrincipal' | trans }}</h2>
