@@ -8,6 +8,7 @@ use App\Entity\RGI;
 use App\Form\QuotaSearchType;
 use App\Form\QuotaType;
 use DateTime;
+use Doctrine\ORM\EntityManagerInterface;
 use Qipsius\TCPDFBundle\Controller\TCPDFController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,13 +22,19 @@ use Symfony\Component\Security\Core\Security;
  */
 class QuotaController extends AbstractController
 {
+
+    private EntityManagerInterface $em;
+    
+    public function __construct(EntityManagerInterface $em)
+    {
+        $this->em = $em;
+    }
     /**
      * @Route("/quota/new", name="quota_new")
      * @IsGranted("ROLE_USER")
      */
     public function new(Request $request, Security $security)
     {
-        $em = $this->getDoctrine()->getManager();
         $user = $security->getUser();
 
         $form = $this->createForm(QuotaType::class, new Quota(), [
@@ -40,7 +47,7 @@ class QuotaController extends AbstractController
             $data = $form->getData();
 
             $dni = $data->getDni();
-            $titular = $em->getRepository(Quota::class)->findOneBy(['dni' => $dni]);
+            $titular = $this->em->getRepository(Quota::class)->findOneBy(['dni' => $dni]);
             if (null !== $titular) {
                 $this->addFlash('error', 'messages.existingPrincipal');
 
@@ -52,9 +59,8 @@ class QuotaController extends AbstractController
             }
             $data->setCreateDate(new DateTime());
             $data->setCreatedBy($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+            $this->em->persist($data);
+            $this->em->flush();
 
             $this->addFlash('success', 'messages.quotaSaved');
             $form = $this->createForm(QuotaType::class, new Quota());
@@ -159,9 +165,8 @@ class QuotaController extends AbstractController
             $data = $form->getData();
             $data->setLastModificationDate(new \DateTime());
             $data->setModifiedBy($user);
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+            $this->em->persist($data);
+            $this->em->flush();
             $this->addFlash('success', 'messages.quotaSaved');
         }
 
@@ -178,9 +183,8 @@ class QuotaController extends AbstractController
      */
     public function delete(Quota $quota)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($quota);
-        $em->flush();
+        $this->em->remove($quota);
+        $this->em->flush();
 
         return $this->redirectToRoute('quota_list');
     }
@@ -291,15 +295,14 @@ class QuotaController extends AbstractController
      */
     public function list(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $quotas = $em->getRepository('App:Quota')->findAll();
+        $quotas = $this->em->getRepository(Quota::class)->findAll();
 
         $form = $this->createForm(QuotaSearchType::class);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $result = $em->getRepository('App:Quota')->findByDates($data);
+            $result = $this->em->getRepository(Quota::class)->findByDates($data);
             $quotas = $result;
         }
 

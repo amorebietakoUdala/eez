@@ -8,12 +8,8 @@ import 'tableexport.jquery.plugin';
 import 'bootstrap-table/dist/extensions/export/bootstrap-table-export'
 import 'bootstrap-table/dist/locale/bootstrap-table-es-ES';
 import 'bootstrap-table/dist/locale/bootstrap-table-eu-EU';
-import 'bootstrap-datepicker';
-import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.es';
-import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.eu';
-import 'eonasdan-bootstrap-datetimepicker';
-import 'pc-bootstrap4-datetimepicker';
-import moment from 'moment';
+import tempusDominus from '@eonasdan/tempus-dominus';
+import customDateFormat from '@eonasdan/tempus-dominus/dist/plugins/customDateFormat';
 
 import {
     createConfirmationAlert
@@ -21,15 +17,32 @@ import {
 const routes = require('../../../public/js/fos_js_routes.json');
 import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
 
-function dateFormat(value, row, index) {
-    if (value !== null) {
-        return moment(value).format('YYYY-MM-DD HH:mm');
-    } else {
-        return '';
-    }
-}
-
 $(document).ready(function () {
+    $('.js-datetimepicker').each((i,v) => {
+        tempusDominus.extend(customDateFormat);
+        new tempusDominus.TempusDominus(v,{
+            display: {
+              buttons: {
+                close: true,
+              },
+              components: {
+                useTwentyfourHour: true,
+                decades: false,
+                year: true,
+                month: true,
+                date: true,
+                hours: true,
+                minutes: true,
+              },
+            },
+            localization: {
+              locale: current_locale,
+              dayViewHeaderFormat: { month: 'long', year: 'numeric' },
+              format: 'yyyy-MM-dd hh:mm',
+            },
+        });
+    });
+
     $('.js-datetimepicker').datetimepicker({
         format: 'YYYY-MM-DD',
         sideBySide: false,

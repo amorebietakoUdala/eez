@@ -8,24 +8,41 @@ import 'tableexport.jquery.plugin';
 import 'bootstrap-table/dist/extensions/export/bootstrap-table-export'
 import 'bootstrap-table/dist/locale/bootstrap-table-es-ES';
 import 'bootstrap-table/dist/locale/bootstrap-table-eu-EU';
-import 'bootstrap-datepicker';
-import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.es';
-import 'bootstrap-datepicker/js/locales/bootstrap-datepicker.eu';
-import 'eonasdan-bootstrap-datetimepicker';
-import 'pc-bootstrap4-datetimepicker';
-
+import tempusDominus from '@eonasdan/tempus-dominus';
+import customDateFormat from '@eonasdan/tempus-dominus/dist/plugins/customDateFormat';
 
 import {
     createConfirmationAlert
 } from '../common/alert';
 const routes = require('../../../public/js/fos_js_routes.json');
 import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+var current_locale = $('html').attr("lang");
 
 $(document).ready(function () {
-    $('.js-datetimepicker').datetimepicker({
-        format: 'YYYY-MM-DD',
-        sideBySide: false,
-        locale: $('html').attr('lang'),
+    $('.js-datetimepicker').each((i,v) => {
+        tempusDominus.extend(customDateFormat);
+        new tempusDominus.TempusDominus(v,{
+            display: {
+              buttons: {
+                close: true,
+                clear: true,
+              },
+              components: {
+                useTwentyfourHour: true,
+                decades: false,
+                year: true,
+                month: true,
+                date: true,
+                clock: false,
+              },
+            },
+            debug: true,
+            localization: {
+              locale: current_locale+'-'+current_locale.toUpperCase(),
+              dayViewHeaderFormat: { month: 'long', year: 'numeric' },
+              format: 'yyyy-MM-dd',
+            },
+        });
     });
 
     $('#taula').bootstrapTable({
