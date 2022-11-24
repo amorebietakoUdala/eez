@@ -32,3 +32,4 @@ yarn-error.log
 ###< phpunit/phpunit ###
 
 composer.json.dev
+/.yarn/
