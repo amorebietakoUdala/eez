@@ -1,0 +1,38 @@
+<div class="col-lg border border-black p-0">
+   <div class="border border-black text-center bg-light">
+      <h2 class="h5">{{ "title.quotaDetails" | trans }}</h2>
+   </div>
+   <div class="container row mt-1">
+      <p>
+         <br/>
+         <b>{{ 'quota.createDate' | trans }}: </b>
+            {% if form.vars.value.createDate is defined and form.vars.value.createDate is not empty %}
+               {{ form.vars.value.createDate | date ('Y/m/d h:i:s')}}
+            {% else %}
+               {{ 'messages.notSavedYet' | trans }}
+            {% endif %}
+            <br/>
+         <b>{{ 'quota.createdBy' | trans }}: </b>
+            {% if form.vars.value.createdBy is defined and form.vars.value.createdBy is not empty %}
+               {{ form.vars.value.createdBy.username }}
+            {% else %}
+               {{ 'messages.notSavedYet' | trans }}
+            {% endif %}
+            <br/><br/>
+         <b>{{ 'quota.lastModificationDate' | trans }}: </b>
+            {% if form.vars.value.lastModificationDate is defined and form.vars.value.lastModificationDate is not empty %}
+               {{ form.vars.value.lastModificationDate | date ('Y/m/d h:i:s')}}
+            {% else %}
+               {{ 'messages.notSavedYet' | trans }}
+            {% endif %}
+            <br/>
+         <b>{{ 'quota.modifiedBy' | trans }}: </b>
+            {% if form.vars.value.modifiedBy is defined and form.vars.value.modifiedBy is not empty %}
+               {{ form.vars.value.modifiedBy }}
+            {% else %}
+               {{ 'messages.notSavedYet' | trans }}
+            {% endif %}
+            <br/><br/>
+      </p>
+   </div>
+</div>

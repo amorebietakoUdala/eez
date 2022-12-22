@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use App\Controller\BaseController;
 use App\Entity\Deduction;
 use App\Entity\Quota;
 use App\Entity\RGI;
 use App\Form\QuotaSearchType;
 use App\Form\QuotaType;
+use App\Repository\QuotaRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Qipsius\TCPDFBundle\Controller\TCPDFController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,14 +21,16 @@ use Symfony\Component\Security\Core\Security;
 /**
  * @Route("/{_locale}")
  */
-class QuotaController extends AbstractController
+class QuotaController extends BaseController
 {
 
     private EntityManagerInterface $em;
+    private QuotaRepository $repo;
     
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(EntityManagerInterface $em, QuotaRepository $repo)
     {
         $this->em = $em;
+        $this->repo = $repo;
     }
     /**
      * @Route("/quota/new", name="quota_new")
@@ -35,6 +38,7 @@ class QuotaController extends AbstractController
      */
     public function new(Request $request, Security $security)
     {
+        $this->loadQueryParameters($request);
         $user = $security->getUser();
 
         $form = $this->createForm(QuotaType::class, new Quota(), [
@@ -47,7 +51,7 @@ class QuotaController extends AbstractController
             $data = $form->getData();
 
             $dni = $data->getDni();
-            $titular = $this->em->getRepository(Quota::class)->findOneBy(['dni' => $dni]);
+            $titular = $this->repo->findOneBy(['dni' => $dni]);
             if (null !== $titular) {
                 $this->addFlash('error', 'messages.existingPrincipal');
 
@@ -85,6 +89,7 @@ class QuotaController extends AbstractController
      */
     public function print(Request $request, TCPDFController $pdfService)
     {
+        $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, null);
 
         $form->handleRequest($request);
@@ -142,7 +147,7 @@ class QuotaController extends AbstractController
 
         $form = $this->createForm(QuotaSearchType::class, new QuotaSearchType());
 
-        return $this->render('quota/list.html.twig', [
+        return $this->render('quota/index.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -153,6 +158,7 @@ class QuotaController extends AbstractController
      */
     public function edit(Request $request, Quota $quota, Security $security)
     {
+        $this->loadQueryParameters($request);
         $user = $security->getUser();
 
         $form = $this->createForm(QuotaType::class, $quota, [
@@ -181,12 +187,13 @@ class QuotaController extends AbstractController
      * @Route("/quota/{quota}/delete", name="quota_delete")
      * @IsGranted("ROLE_USER")
      */
-    public function delete(Quota $quota)
+    public function delete(Request $request, Quota $quota)
     {
+        $this->loadQueryParameters($request);
         $this->em->remove($quota);
         $this->em->flush();
 
-        return $this->redirectToRoute('quota_list');
+        return $this->redirectToRoute('quota_index');
     }
 
     /**
@@ -195,6 +202,7 @@ class QuotaController extends AbstractController
      */
     public function calculate(Request $request)
     {
+        $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, null, [
             'validation_groups' => ['calculateQuota'],
         ]);
@@ -245,6 +253,7 @@ class QuotaController extends AbstractController
      */
     public function editCalculate(Request $request, Quota $quota)
     {
+        $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, $quota, [
             'validation_groups' => ['calculateQuota'],
         ]);
@@ -278,8 +287,9 @@ class QuotaController extends AbstractController
      * @Route("/quota/{quota}", name="quota_show")
      * @IsGranted("ROLE_USER")
      */
-    public function show(Quota $quota)
+    public function show(Request $request, Quota $quota)
     {
+        $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, $quota);
 
         return $this->render('quota/edit.html.twig', [
@@ -290,23 +300,24 @@ class QuotaController extends AbstractController
     }
 
     /**
-     * @Route("/quota", name="quota_list")
+     * @Route("/quota", name="quota_index")
      * @IsGranted("ROLE_USER")
      */
     public function list(Request $request)
     {
-        $quotas = $this->em->getRepository(Quota::class)->findAll();
+        $this->loadQueryParameters($request);
+        $quotas = $this->repo->findAll();
 
         $form = $this->createForm(QuotaSearchType::class);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $result = $this->em->getRepository(Quota::class)->findByDates($data);
+            $result = $this->repo->findByDates($data);
             $quotas = $result;
         }
 
-        return $this->render('quota/list.html.twig', [
+        return $this->render('quota/index.html.twig', [
             'form' => $form->createView(),
             'quotas' => $quotas,
         ]);

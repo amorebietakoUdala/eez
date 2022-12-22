@@ -55,7 +55,6 @@ class QuotaRepository extends ServiceEntityRepository
         }
 
         $result = $qb->getQuery()->getResult();
-
         return $result;
     }
 

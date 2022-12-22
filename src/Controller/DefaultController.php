@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-class DefaultController extends AbstractController
+class DefaultController extends BaseController
 {
     /**
      * @Route("/", name="default")
@@ -14,6 +14,6 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-        return $this->redirectToRoute('quota_list');
+        return $this->redirectToRoute('quota_index');
     }
 }

@@ -1,0 +1,19 @@
+<div class="row m-1 p-0 border border-black">
+   <div class="col-12 border border-black text-center bg-light">
+      <span class="h5">{{ "title.calculations" | trans }}</span>
+   </div>
+   <div class="row col-12 mt-1">
+      <div class="col-lg-2">
+         {{ form_row(form.totalHouseholdIncome, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
+      </div>
+      <div class="col-lg-2">
+         {{ form_row(form.equityIncrease, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
+      </div>
+      <div class="col-lg-2">
+         {{ form_row(form.monthlyContribution, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
+      </div>
+      <div class="col-lg-2">
+         {{ form_row(form.pricePerHour, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
+      </div>
+   </div>
+</div>

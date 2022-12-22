@@ -1,0 +1,59 @@
+{% if quotas is defined and quotas|length > 0 %}
+   <table id="taula" class="table bootstrap-table mt-3"
+      data-table-target="table"
+      data-page-number="{{ page }}" 
+      data-page-size="{{ pageSize }}"
+      data-page-sortName="{{ sortName }}"
+      data-page-sortOrder="{{ sortOrder }}">
+      <thead>
+         <tr>
+            <th data-sortable="true">{{"quota.id" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.dni" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.name" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.surname1" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.surname2" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.numberOfHours" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.createDate" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.createdBy" | trans | capitalize}}</th>
+            <th data-sortable="true">{{"quota.lastModificationDate" | trans | capitalize}}</th>
+            <th data-sortable="true" data-field="options">{{"table.options" | trans | capitalize}}</th>
+         </tr>
+      </thead>
+      <tbody>
+         {% for quota in quotas %}
+            <tr>
+               <td>{{quota.id}}</td>
+               <td>{{quota.dni}}</td>
+               <td>{{quota.name}}</td>
+               <td>{{quota.surname1}}</td>
+               <td>{{quota.surname2}}</td>
+               <td>{{quota.numberOfHours}}</td>
+               <td>{{quota.createDate | date("Y/m/d h:m:s")}}</td>
+               <td>{{quota.createdBy.username}}</td>
+
+               <td>
+                  {% if quota.modifiedBy is not empty %}
+                     {{quota.lastModificationDate | date("Y/m/d h:m:s")}}
+                  {% endif %}
+               </td>
+               <td>
+                  <a href="{{ path ("quota_show",{'quota': quota.id })}}" data-action="click->table#onClick" data-pagination="false">
+                     <i class="fa fa-eye"></i>
+                  </a>
+                  &nbsp;<a href="{{ path ("quota_edit",{'quota': quota.id })}}" data-action="click->table#onClick" data-pagination="false">
+                     <i class="fa fa-edit"></i>
+                  </a>
+                  &nbsp;<a href="{{ path ('quota_delete',{'quota': quota.id })}}"
+                     data-action="click->table#onClick" 
+                     data-confirm="true"
+                     data-return="false">
+                     <i class="fa fa-trash"></i>
+                  </a>
+               </td>
+            </tr>
+         {% endfor %}
+      </tbody>
+   </table>
+{% else %}
+   <div class="mt-2 p-2 border border-black text-center bg-light">{{"messages.results0" | trans }}</div>
+{% endif %}

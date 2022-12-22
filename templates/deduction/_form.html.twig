@@ -4,28 +4,38 @@
 }) }}
 
 <div class="row justify-content-around mt-2">
-	<div class="col-5 border border-black p-0">
+	<div class="col-lg-5 border border-black p-0">
 		<div class="border border-black text-center bg-light">
 			<h2 class="h5">{{ "title.dependency" | trans }}</h2>
 		</div>
-		<div class="form-row form-group justify-content-around p-1">
-			{{ form_row(form.dependencyMinimum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
-			{{ form_row(form.dependencyMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+		<div class="row d-flex justify-content-around">
+			<div class="col-lg-5">
+				{{ form_row(form.dependencyMinimum, {'attr': {'class': 'form-control form-control-sm input-align-right'}}) }}
+			</div>
+			<div class="col-lg-5">
+				{{ form_row(form.dependencyMaximum, {'attr': {'class': 'form-control form-control-sm input-align-right'}}) }}
+			</div>
 		</div>
 	</div>
-	<div class="col-5 border border-black p-0">
+	<div class="col-lg-5 border border-black p-0">
 		<div class="border border-black text-center bg-light">
 			<h2 class="h5">{{ "title.housing" | trans }}</h2>
 		</div>
-		<div class="form-row form-group justify-content-around p-1">
-			{{ form_row(form.housingPercentage, {'attr': {'class': 'col form-control form-control-sm'}}) }}
-			{{ form_row(form.housingMaximum, {'attr': {'class': 'col form-control form-control-sm'}}) }}
+		<div class="row d-flex justify-content-around">
+			<div class="col-lg-5">
+				{{ form_row(form.housingPercentage, {'attr': {'class': 'form-control form-control-sm input-align-right'}}) }}
+			</div>
+			<div class="col-lg-5">
+				{{ form_row(form.housingMaximum, {'attr': {'class': 'form-control form-control-sm input-align-right'}}) }}
+			</div>
 		</div>
 	</div>
 </div>
-<div class="row justify-content-center mt-2">
-	<button id="btnSave" class="btn btn-primary" type="submit">{{ "btn.save" | trans }}</button>
-	<button class="btn btn-primary ml-2 js-back" type="button" data-url="{{ path('default') }}">{{ "btn.cancel" | trans }}</button>
+<div class="d-flex justify-content-center mt-2">
+	<div class="d-grid gx-3 d-md-block">
+		<button id="btnSave" class="btn btn-primary" type="submit">{{ "btn.save" | trans }}</button>
+		<a href="{{ path('default') }}" class="btn btn-secondary">{{ "btn.cancel" | trans }}</a>
+	</div>
 </div>
 <!-- Token CSRF -->
 {{ form_widget(form._token) }}

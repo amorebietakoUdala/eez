@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -13,7 +13,7 @@ use App\Form\RGIType;
  * @Route("/{_locale}")
  * @IsGranted("ROLE_USER")
  */
-class RGIController extends AbstractController
+class RGIController extends BaseController
 {
     /**
      * @Route("/rgi", name="rgi")

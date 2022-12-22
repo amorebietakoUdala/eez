@@ -40,6 +40,10 @@ security:
         - amreu.login.form.passportauthenticator
       entry_point: amreu.login.form.passportauthenticator
 
+      remember_me:
+        secret:   '%kernel.secret%' # required
+        lifetime: 604800 # 1 week in seconds
+
       # form_login:
       #   login_path: user_security_login_check
       #   check_path: user_security_login_check
