@@ -11,7 +11,7 @@ use App\Form\DeductionType;
 
 /**
  * @Route("/{_locale}")
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_EEZ")
  */
 class DeductionController extends BaseController
 {
@@ -20,7 +20,7 @@ class DeductionController extends BaseController
      */
     public function edit(Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_EEZ');
 
         $deduction = $this->getDoctrine()->getRepository(Deduction::class)->findOneBy([]);
         if (null === $deduction) {

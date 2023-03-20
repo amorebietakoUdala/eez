@@ -34,7 +34,7 @@ class QuotaController extends BaseController
     }
     /**
      * @Route("/quota/new", name="quota_new")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function new(Request $request, Security $security)
     {
@@ -85,7 +85,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/print", name="quota_print", methods={"GET","POST"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function print(Request $request, TCPDFController $pdfService)
     {
@@ -154,7 +154,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/{quota}/edit", name="quota_edit")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function edit(Request $request, Quota $quota, Security $security)
     {
@@ -185,7 +185,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/{quota}/delete", name="quota_delete")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function delete(Request $request, Quota $quota)
     {
@@ -198,7 +198,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/calculate", name="quota_calculate", methods={"GET", "POST"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function calculate(Request $request)
     {
@@ -249,7 +249,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/{quota}/calculate", name="quota_edit_calculate", methods={"GET", "POST"})
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function editCalculate(Request $request, Quota $quota)
     {
@@ -285,7 +285,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota/{quota}", name="quota_show")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function show(Request $request, Quota $quota)
     {
@@ -301,7 +301,7 @@ class QuotaController extends BaseController
 
     /**
      * @Route("/quota", name="quota_index")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function list(Request $request)
     {

@@ -10,7 +10,7 @@ class DefaultController extends BaseController
 {
     /**
      * @Route("/", name="default")
-     * @IsGranted("ROLE_USER")
+     * @IsGranted("ROLE_EEZ")
      */
     public function index()
     {

@@ -11,7 +11,7 @@ use App\Form\RGIType;
 
 /**
  * @Route("/{_locale}")
- * @IsGranted("ROLE_USER")
+ * @IsGranted("ROLE_EEZ")
  */
 class RGIController extends BaseController
 {
@@ -20,7 +20,7 @@ class RGIController extends BaseController
      */
     public function edit(Request $request)
     {
-        $this->denyAccessUnlessGranted('ROLE_USER');
+        $this->denyAccessUnlessGranted('ROLE_EEZ');
 
         $rgi = $this->getDoctrine()->getRepository(RGI::class)->findOneBy([]);
         if (null === $rgi) {
