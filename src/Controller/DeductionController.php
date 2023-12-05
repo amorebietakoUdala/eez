@@ -5,24 +5,29 @@ namespace App\Controller;
 use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Entity\Deduction;
 use App\Form\DeductionType;
+use App\Repository\DeductionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * @Route("/{_locale}")
- * @IsGranted("ROLE_EEZ")
- */
+#[Route(path: '/{_locale}')]
+#[IsGranted('ROLE_EEZ')]
 class DeductionController extends BaseController
 {
-    /**
-     * @Route("/deduction", name="deduction")
-     */
+    public function __construct(
+        private readonly EntityManagerInterface $em, 
+        private readonly DeductionRepository $repo
+        )
+    {
+    }
+
+    #[Route(path: '/deduction', name: 'deduction')]
     public function edit(Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_EEZ');
 
-        $deduction = $this->getDoctrine()->getRepository(Deduction::class)->findOneBy([]);
+        $deduction = $this->repo->findOneBy([]);
         if (null === $deduction) {
             $deduction = new Deduction();
         }
@@ -31,15 +36,14 @@ class DeductionController extends BaseController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+            $this->em->persist($data);
+            $this->em->flush();
 
             $this->addFlash('success', 'messages.changesSaved');
         }
 
         return $this->render('deduction/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

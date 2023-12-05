@@ -2,48 +2,37 @@
 
 namespace App\Entity;
 
+use App\Repository\DeductionRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\DeductionRepository")
- */
+#[ORM\Entity(repositoryClass: DeductionRepository::class)]
 class Deduction
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
+    #[ORM\Column(type: 'decimal', precision: 10, scale: 2, nullable: true)]
+    #[Assert\PositiveOrZero]
+    #[Assert\NotBlank]
     private $dependencyMinimum;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $dependencyMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, nullable: true)]
+    #[Assert\PositiveOrZero]
+    #[Assert\NotBlank]
+    private ?string $dependencyMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $housingPercentage;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, nullable: true)]
+    #[Assert\PositiveOrZero]
+    #[Assert\NotBlank]
+    private ?string $housingPercentage = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, nullable=true)
-     * @Assert\PositiveOrZero
-     * @Assert\NotBlank
-     */
-    private $housingMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, nullable: true)]
+    #[Assert\PositiveOrZero]
+    #[Assert\NotBlank]
+    private ?string $housingMaximum = null;
 
     public function getId(): ?int
     {

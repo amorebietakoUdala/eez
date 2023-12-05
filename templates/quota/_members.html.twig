@@ -25,7 +25,7 @@
 					{{ form_row(memberForm.heritage, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
 				</div>
 				<div class="col-lg-2">
-					{{ form_row(memberForm.dependencyGrade, {'attr': {'class': 'form-control form-control-sm'}}) }}
+					{{ form_row(memberForm.dependencyGrade, {'attr': {'class': 'form-select form-select-sm'}}) }}
 				</div>
 				<div class="col form-check p-3">
 					{{ form_label(memberForm.discapacity65, {'attr': {'class': 'form-check-label'}}) }}
@@ -37,10 +37,10 @@
 	</li>
 {% endmacro %}
 
-<div class="col-12 border border-black p-0" {{ stimulus_controller('collection', {
+<div class="col-12 border p-0" {{ stimulus_controller('collection', {
 	'listSelector' : '#member-fields-list'
 	}) }}>
-   <div class="border border-black text-center bg-light">
+   <div class="border text-center bg-light">
       <span class="h5">{{ "title.members" | trans }}</span>
       <a	data-action="collection#addElement">
          <span class="badge rounded-pill text-bg-primary mb-1"><i class="fa fa-plus"></i></span>
