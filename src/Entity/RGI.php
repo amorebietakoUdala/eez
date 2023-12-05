@@ -2,89 +2,58 @@
 
 namespace App\Entity;
 
+use App\Repository\RGIRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\RGIRepository")
- */
+#[ORM\Entity(repositoryClass: RGIRepository::class)]
 class RGI
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $oneMemberMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $oneMemberMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $oneMemberHeritageMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $oneMemberHeritageMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $oneMemberPensionerMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $oneMemberPensionerMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     private $oneMemberPensionerHeritageMaximum;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $twoMemberMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $twoMemberMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $twoMemberHeritageMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $twoMemberHeritageMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $twoMemberPensionerMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $twoMemberPensionerMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     private $twoMemberPensionerHeritageMaximum;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $threeOrMoreMemberMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $threeOrMoreMemberMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $threeOrMoreMemberHeritageMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $threeOrMoreMemberHeritageMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $threeOrMoreMemberPensionerMaximum;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $threeOrMoreMemberPensionerMaximum = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     private $threeOrMoreMemberPensionerHeritageMaximum;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $maximumPricePerHour;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $maximumPricePerHour = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
-    private $minimumPricePerMonth;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    private ?string $minimumPricePerMonth = null;
 
     public function getId(): ?int
     {
@@ -262,29 +231,17 @@ class RGI
     public function getCurrentBasicRent($members, $pensioner): ?float
     {
         if ($pensioner) {
-            switch ($members) {
-            case 1:
-                $basicRent = $this->oneMemberPensionerMaximum;
-                break;
-            case 2:
-                $basicRent = $this->twoMemberPensionerMaximum;
-                break;
-            default:
-                $basicRent = $this->threeOrMoreMemberPensionerMaximum;
-                break;
-            }
+            $basicRent = match ($members) {
+                1 => $this->oneMemberPensionerMaximum,
+                2 => $this->twoMemberPensionerMaximum,
+                default => $this->threeOrMoreMemberPensionerMaximum,
+            };
         } else {
-            switch ($members) {
-            case 1:
-                $basicRent = $this->oneMemberMaximum;
-                break;
-            case 2:
-                $basicRent = $this->twoMemberMaximum;
-                break;
-            default:
-                $basicRent = $this->threeOrMoreMemberMaximum;
-                break;
-            }
+            $basicRent = match ($members) {
+                1 => $this->oneMemberMaximum,
+                2 => $this->twoMemberMaximum,
+                default => $this->threeOrMoreMemberMaximum,
+            };
         }
 
         return $basicRent;

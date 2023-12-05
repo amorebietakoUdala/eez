@@ -1,5 +1,5 @@
-<div class="col-lg-8 border border-black p-0 mr-1">
-   <div class="border border-black text-center bg-light">
+<div class="col-lg-8 border p-0 mr-1">
+   <div class="border text-center bg-light">
       <h2 class="h5">{{ "title.quotaPrincipal" | trans }}</h2>
    </div>
    <div class="container row mt-1">
@@ -26,7 +26,7 @@
          {{ form_widget(form.pensioner, {'attr': {'class': 'form-check-input'}}) }}
       </div>
       <div class="col-3">
-         {{ form_row(form.dependencyGrade, {'attr': {'class': 'form-control form-control-sm text-right'}}) }}
+         {{ form_row(form.dependencyGrade, {'attr': {'class': 'form-select form-select-sm text-right'}}) }}
       </div>
       <div class="col-3 form-check p-3">
          {{ form_label(form.discapacity65, {'attr': {'class': 'form-check-label'}}) }}

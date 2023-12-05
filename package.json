@@ -13,7 +13,6 @@
         "@symfony/webpack-encore": "^4.1.2",
         "bazinga-translator": "^5.0.0",
         "bootstrap": "^5.2.0",
-        "bootstrap-table": "1.21.1",
         "core-js": "^3.0.0",
         "file-loader": "^6.0.0",
         "http-proxy": "^1.18.1",

@@ -5,24 +5,29 @@ namespace App\Controller;
 use App\Controller\BaseController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Entity\RGI;
 use App\Form\RGIType;
+use App\Repository\RGIRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * @Route("/{_locale}")
- * @IsGranted("ROLE_EEZ")
- */
+#[Route(path: '/{_locale}')]
+#[IsGranted('ROLE_EEZ')]
 class RGIController extends BaseController
 {
-    /**
-     * @Route("/rgi", name="rgi")
-     */
+    public function __construct(
+        private readonly EntityManagerInterface $em,
+        private readonly RGIRepository $repo,
+        )
+    {
+    }
+
+    #[Route(path: '/rgi', name: 'rgi')]
     public function edit(Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_EEZ');
 
-        $rgi = $this->getDoctrine()->getRepository(RGI::class)->findOneBy([]);
+        $rgi = $this->repo->findOneBy([]);
         if (null === $rgi) {
             $rgi = new RGI();
         }
@@ -31,15 +36,14 @@ class RGIController extends BaseController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($data);
-            $em->flush();
+            $this->em->persist($data);
+            $this->em->flush();
 
             $this->addFlash('success', 'messages.changesSaved');
         }
 
         return $this->render('rgi/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 }

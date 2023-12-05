@@ -2,154 +2,108 @@
 
 namespace App\Entity;
 
+use App\Validator\IsValidDNI;
+use App\Repository\QuotaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator\IsValidDNI;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\QuotaRepository")
- */
+#[ORM\Entity(repositoryClass: QuotaRepository::class)]
 class Quota
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
      * @IsValidDNI(groups={"saveQuota"})
      * )
      */
+    #[ORM\Column(type: 'string', length: 10, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     private $dni;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     private $surname1;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     private $surname2;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $incomeAndAid;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
     private $pensioner;
 
-    /**
-     * @ORM\Column(type="string", length=1, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'string', length: 1, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     private $sex;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
     private $discapacity65;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, options={"default" : 0})
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0])]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $heritage;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, options={"default" : 0})
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0])]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $totalHouseholdIncome;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2, options={"default" : 0}, nullable=true)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0], nullable: true)]
     private $housingExpediture;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     private $equityIncrease;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $dependencyGrade;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $housingBonus;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $dependencyBonus;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero(groups={"saveQuota","calculateQuota"})
-     * @Assert\NotBlank(groups={"calculateQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\PositiveOrZero(groups: ['saveQuota', 'calculateQuota'])]
+    #[Assert\NotBlank(groups: ['calculateQuota'])]
     private $numberOfHours;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     private $monthlyContribution;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $pricePerHour;
 
-    /**
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: 'datetime')]
     private $createDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="id")
-     */
+    #[ORM\ManyToOne(targetEntity: 'User', cascade: ['persist'])]
+    #[ORM\JoinColumn(referencedColumnName: 'id')]
     private $createdBy;
 
-    /**
-     * @ORM\Column(type="datetime", nullable=true)
-     */
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private $lastModificationDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="User", cascade={"persist"})
-     * @ORM\JoinColumn(referencedColumnName="id")
-     */
+    #[ORM\ManyToOne(targetEntity: 'User', cascade: ['persist'])]
+    #[ORM\JoinColumn(referencedColumnName: 'id')]
     private $modifiedBy;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Member", mappedBy="quota", orphanRemoval=true, cascade={"persist", "remove"})
-     */
-    private $members;
+    #[ORM\OneToMany(targetEntity: 'Member', mappedBy: 'quota', orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection|array $members;
 
     public function __construct()
     {
@@ -184,16 +138,6 @@ class Quota
     public function getIncomeAndAid()
     {
         return $this->incomeAndAid;
-    }
-
-    public function getProfessionalIncome()
-    {
-        return $this->professionalIncome;
-    }
-
-    public function getCapitalIncome()
-    {
-        return $this->capitalIncome;
     }
 
     public function getPensioner()
@@ -297,20 +241,6 @@ class Quota
     public function setIncomeAndAid($incomeAndAid)
     {
         $this->incomeAndAid = $incomeAndAid;
-
-        return $this;
-    }
-
-    public function setProfessionalIncome($professionalIncome)
-    {
-        $this->professionalIncome = $professionalIncome;
-
-        return $this;
-    }
-
-    public function setCapitalIncome($capitalIncome)
-    {
-        $this->capitalIncome = $capitalIncome;
 
         return $this;
     }
@@ -467,7 +397,7 @@ class Quota
     public function getTotalHeritage(): ?float
     {
         $heritage = $this->heritage;
-        /* @var $member Member */
+        /** @var Member $member */
         foreach ($this->members as $member) {
             $heritage += $member->getHeritage();
         }
@@ -480,29 +410,17 @@ class Quota
         $members = $this->getMemberCount();
         $pensioner = $this->pensioner;
         if ($pensioner) {
-            switch ($members) {
-                case 1:
-                    $heritageMaximum = $rgi->getOneMemberPensionerHeritageMaximum();
-                    break;
-                case 2:
-                    $heritageMaximum = $rgi->getTwoMemberPensionerHeritageMaximum();
-                    break;
-                default:
-                    $heritageMaximum = $rgi->getThreeOrMoreMemberPensionerHeritageMaximum();
-                    break;
-            }
+            $heritageMaximum = match ($members) {
+                1 => $rgi->getOneMemberPensionerHeritageMaximum(),
+                2 => $rgi->getTwoMemberPensionerHeritageMaximum(),
+                default => $rgi->getThreeOrMoreMemberPensionerHeritageMaximum(),
+            };
         } else {
-            switch ($members) {
-                case 1:
-                    $heritageMaximum = $rgi->getOneMemberHeritageMaximum();
-                    break;
-                case 2:
-                    $heritageMaximum = $rgi->getTwoMemberHeritageMaximum();
-                    break;
-                default:
-                    $heritageMaximum = $rgi->getThreeOrMoreMemberHeritageMaximum();
-                    break;
-            }
+            $heritageMaximum = match ($members) {
+                1 => $rgi->getOneMemberHeritageMaximum(),
+                2 => $rgi->getTwoMemberHeritageMaximum(),
+                default => $rgi->getThreeOrMoreMemberHeritageMaximum(),
+            };
         }
 
         if ($this->getTotalHeritage() - $heritageMaximum < 0) {
@@ -515,7 +433,7 @@ class Quota
     public function getTotalHouseholdIncome(): ?float
     {
         $income = $this->incomeAndAid;
-        /* @var $member Member */
+        /** @var Member $member */
         foreach ($this->members as $member) {
             $income += $member->getIncomeAndAid();
         }

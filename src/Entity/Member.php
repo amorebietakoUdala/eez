@@ -2,76 +2,58 @@
 
 namespace App\Entity;
 
+use App\Validator\IsValidDNI;
+use App\Repository\MemberRepository;
+use App\Entity\Quota;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\Validator\IsValidDNI;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\MemberRepository")
- */
+#[ORM\Entity(repositoryClass: MemberRepository::class)]
 class Member
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=10, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
      * @IsValidDNI(groups={"saveQuota"})
      */
-    private $dni;
+    #[ORM\Column(type: 'string', length: 10, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    private ?string $dni = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
-    private $name;
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    private ?string $name = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
-    private $surname1;
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    private ?string $surname1 = null;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=false)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     */
-    private $surname2;
+    #[ORM\Column(type: 'string', length: 255, nullable: false)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    private ?string $surname2 = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
-    private $incomeAndAid;
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
+    private ?string $incomeAndAid = null;
 
-    /**
-     * @ORM\Column(type="decimal", precision=12, scale=2)
-     * @Assert\NotBlank(groups={"saveQuota"})
-     * @Assert\PositiveOrZero(groups={"saveQuota"})
-     */
+    #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    #[Assert\PositiveOrZero(groups: ['saveQuota'])]
     private $heritage;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $dependencyGrade;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: 'boolean', options: ['default' => 0])]
     private $discapacity65;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="Quota", inversedBy="members")
-     * @ORM\JoinColumn(name="quota_id", referencedColumnName="id")
-     */
-    private $quota;
+    #[ORM\ManyToOne(targetEntity: 'Quota', inversedBy: 'members')]
+    #[ORM\JoinColumn(name: 'quota_id', referencedColumnName: 'id')]
+    private ?Quota $quota = null;
 
     public function getId(): ?int
     {
