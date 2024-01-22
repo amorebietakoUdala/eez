@@ -1655,8 +1655,11 @@ __metadata:
 
 "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets::locator=root-workspace-0b6124%40workspace%3A.":
   version: 0.1.0
-  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=4ceccb&locator=root-workspace-0b6124%40workspace%3A."
-  checksum: dd2c756cf4c8048641f69e10f81254952159c7ecbdeace15799677cae7ea605442485a6128eef7768ce2ff0f8819663050e29a193f59db30175006a942ebcd8c
+  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=9008e6&locator=root-workspace-0b6124%40workspace%3A."
+  peerDependencies:
+    "@hotwired/stimulus": ^3.0.0
+    "@hotwired/turbo": ^7.0.1
+  checksum: 235caafb1d42393b666aae401bff7b16eda3337466821727e4f66b901b96633e6b392bbd30d23c28b98101edb59e374bc27f6592f897f921e7a9957dc1882e65
   languageName: node
   linkType: hard
 
