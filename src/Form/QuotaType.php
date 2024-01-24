@@ -3,12 +3,14 @@
 namespace App\Form;
 
 use App\Entity\Quota;
+use App\Validator\IsValidDNI;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class QuotaType extends AbstractType
 {
@@ -17,6 +19,8 @@ class QuotaType extends AbstractType
         $builder
             ->add('dni', null, [
                 'constraints' => [
+                    new NotBlank(),
+                    new IsValidDNI(),
                 ],
                 'label' => 'quota.dni',
             ])
