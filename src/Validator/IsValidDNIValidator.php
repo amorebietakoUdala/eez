@@ -66,11 +66,24 @@ class IsValidDNIValidator extends ConstraintValidator
                 return -1;
             }
         }
-        //algoritmo para comprobacion de codigos tipo CIF
+        // algoritmo para comprobacion de codigos tipo CIF
+        // Suma los números pares quitando la letra. Para el CIF A58818501
+        // Suma = 8 + 1 + 5 = 14
         $suma = $num[2] + $num[4] + $num[6];
         for ($i = 1; $i < 8; $i += 2) {
-            $suma += substr(((string) (2 * $num[$i])), 0, 1) + substr(((string) (2 * $num[$i])), 1, 1);
+            $double = 2 * intval($num[$i]);
+            // Se suman los 2 cifras del resultado de multiplicar por 2 cada una de las posiciones impares. Para el CIF A58818501
+            // Ejemplo: 
+            // 5 * 2 = 10 ==> 1 + 0 = 1
+            // 8 * 2 = 16 ==> 1 + 6 = 7
+            // 8 * 2 = 16 ==> 1 + 6 = 7
+            // 0 * 2 = 0 ==> 0
+            // Y se suma con el resultado de la suma de los pares
+            $suma += intval(substr((string)$double, 0, 1)) + intval(substr((string)$double, 1, 1));
         }
+        // Suma = 14 + 1 + 7 + 7 + 0 = 29
+
+        // Cálculo del dígito de control: 10 - las unidades del total de la suma en este caso 9 con lo cual el dígito de control sería 1
         $n = 10 - \substr($suma, \strlen($suma) - 1, 1);
 
         //comprobacion de NIFs especiales (se calculan como CIFs o como NIFs)
@@ -82,6 +95,7 @@ class IsValidDNIValidator extends ConstraintValidator
             }
         }
         //comprobacion de CIFs
+        // Para las sociedad X y P habria que sumar un 64 al digito de control que hemos calculado para hallar el ASCII d
         if (preg_match('/^[ABCDEFGHJNPQRSUVW]{1}/', $cif)) {
             if ($num[8] == chr(64 + $n) || $num[8] == substr((string) $n, strlen((string) $n) - 1, 1)) {
                 return 2;
