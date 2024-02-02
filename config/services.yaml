@@ -5,11 +5,22 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     app_name: eez
+    department: '%env(DEPARTMENT)%'
+    contactEmail: '%env(CONTACT_EMAIL)%'
+    departmentDefault: '%env(DEPARTMENT_DEFAULT)%'
+    contactEmailDefault: '%env(CONTACT_EMAIL_DEFAULT)%'
+
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $allowedRoles: ["ROLE_ARDURADUNA", "ROLE_ADMIN", "ROLE_INFORMATZAILEA", "ROLE_KANPOKO_TEKNIKARIA"]
+            $department: '%department%'
+            $contactEmail: '%contactEmail%'
+            $departmentDefault: '%departmentDefault%'
+            $contactEmailDefault: '%contactEmailDefault%'
 
     Symfony\Component\Ldap\Ldap:
         arguments: ['@Symfony\Component\Ldap\Adapter\ExtLdap\Adapter']
@@ -38,3 +49,8 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
     Qipsius\TCPDFBundle\Controller\TCPDFController: "@qipsius.tcpdf"
+
+    # Important priority must 100 or less
+    App\EventListener\LocaleEventListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'kernel.request', method: 'onKernelRequest', priority: 100 }
