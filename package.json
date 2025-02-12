@@ -25,7 +25,7 @@
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.32.8",
         "sass-loader": "^13.2.0",
-        "serialize-javascript": "^3.1.0",
+        "serialize-javascript": "^6.0.2",
         "stimulus": "^2.0.0",
         "sweetalert2": "^11.7.27",
         "tableexport.jquery.plugin": "^1.25.0",
