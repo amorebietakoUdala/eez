@@ -24,9 +24,9 @@ framework:
         name_converter: "serializer.name_converter.camel_case_to_snake_case"
 
 when@dev:
-    framework:
-        # Add this to test error pages on dev
-        error_controller: App\Controller\AppErrorController::show
+    # framework:
+    #     # Add this to test error pages on dev
+    #     error_controller: App\Controller\AppErrorController::show
 
 when@test:
     framework:

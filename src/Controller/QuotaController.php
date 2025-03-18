@@ -14,11 +14,10 @@ use App\Repository\RGIRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Qipsius\TCPDFBundle\Controller\TCPDFController;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\SecurityBundle\Security;
 
 #[Route(path: '/{_locale}')]
 class QuotaController extends BaseController
@@ -150,7 +149,7 @@ class QuotaController extends BaseController
 
     #[Route(path: '/quota/{quota}/edit', name: 'quota_edit')]
     #[IsGranted('ROLE_EEZ')]
-    public function edit(Request $request, Quota $quota)
+    public function edit(Request $request, #[MapEntity] Quota $quota)
     {
         $this->loadQueryParameters($request);
         $user = $this->getUser();
@@ -179,7 +178,7 @@ class QuotaController extends BaseController
 
     #[Route(path: '/quota/{quota}/delete', name: 'quota_delete')]
     #[IsGranted('ROLE_EEZ')]
-    public function delete(Request $request, Quota $quota)
+    public function delete(Request $request, #[MapEntity] Quota $quota)
     {
         $this->loadQueryParameters($request);
         $this->em->remove($quota);
@@ -239,7 +238,7 @@ class QuotaController extends BaseController
 
     #[Route(path: '/quota/{quota}/calculate', name: 'quota_edit_calculate', methods: ['GET', 'POST'])]
     #[IsGranted('ROLE_EEZ')]
-    public function editCalculate(Request $request, Quota $quota)
+    public function editCalculate(Request $request, #[MapEntity] Quota $quota)
     {
         $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, $quota, [
@@ -273,7 +272,7 @@ class QuotaController extends BaseController
 
     #[Route(path: '/quota/{quota}', name: 'quota_show')]
     #[IsGranted('ROLE_EEZ')]
-    public function show(Request $request, Quota $quota)
+    public function show(Request $request, #[MapEntity] Quota $quota)
     {
         $this->loadQueryParameters($request);
         $form = $this->createForm(QuotaType::class, $quota);

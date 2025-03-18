@@ -24,7 +24,7 @@ use Symfony\Component\Validator\Constraint;
  */
 class IsValidDNIValidator extends ConstraintValidator
 {
-    public function validate($value, Constraint $constraint)
+    public function validate($value, Constraint $constraint): void
     {
         /** @var IsValidDNI $constraint */
 
@@ -42,7 +42,7 @@ class IsValidDNIValidator extends ConstraintValidator
         }
     }
 
-    private function __valida_nif_cif_nie($cif)
+    private function __valida_nif_cif_nie($cif): int
     {
         //Copyright ©2005-2011 David Vidal Serra. Bajo licencia GNU GPL.
         //Este software viene SIN NINGUN TIPO DE GARANTIA; para saber mas detalles
