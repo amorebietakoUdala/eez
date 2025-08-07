@@ -12,7 +12,7 @@ global.$ = $;
 global.locale = $('html').attr("lang");
 global.jQuery = $;
 
-import './scss/app.scss';
+import './css/app.css';
 
 $(document).ready(function(){
 	$('.js-back').on('click',function(e){
