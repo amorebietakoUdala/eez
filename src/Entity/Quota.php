@@ -466,16 +466,23 @@ class Quota
             + $this->equityIncrease
             - $deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65, $this->members)
             - $deduction->getCurrentHousingBonus($this->housingExpediture)) / 12;
-
+        // dump(
+        //     'Renta-ayudas: '.$this->calculateTotalHouseholdIncome(), 
+        //     'Patrimonio: '.$this->equityIncrease, 
+        //     'Deducción dependencia: '. $deduction->getCurrentDependencyBonus($this->dependencyGrade, $this->discapacity65, $this->members), 
+        //     'Deducción vivienda:' .$deduction->getCurrentHousingBonus($this->housingExpediture), 
+        //     'Ingreso Mensual: '. $monthlyIncome);
         $rest = $monthlyIncome - $rgi->getCurrentBasicRent($this->getMemberCount(), $this->pensioner);
+        // dump('Resto: '.$rest);
         $r = $rest * 15 / 100;
-
+        // dump('R: '.$r);
         return $r;
     }
 
     public function calculateMonthlyContribution(Deduction $deduction, RGI $rgi)
     {
         $monthlyContribution = $this->calculateR($deduction, $rgi) * (1 + ($this->numberOfHours / 100));
+        // dump('Contribución mensual: '.$monthlyContribution);
         if ($monthlyContribution < $rgi->getCurrentMinimumPricePerMonth()) {
             return $rgi->getCurrentMinimumPricePerMonth();
         } else {
@@ -488,7 +495,7 @@ class Quota
     public function calculatePricePerHour(Deduction $deduction, RGI $rgi)
     {
         $pricePerHour = $this->calculateMonthlyContribution($deduction, $rgi) / $this->numberOfHours;
-
+        // dump('Precio por hora:' .$pricePerHour);
         if ($pricePerHour >= $rgi->getMaximumPricePerHour()) {
             return $rgi->getMaximumPricePerHour();
         }
