@@ -24,7 +24,6 @@
         "regenerator-runtime": "^0.13.2",
         "sass": "^1.32.8",
         "sass-loader": "^13.2.0",
-        "serialize-javascript": "^7.0.3",
         "stimulus": "^2.0.0",
         "sweetalert2": "^11.23.0",
         "tableexport.jquery.plugin": "^1.25.0",
@@ -42,6 +41,7 @@
         "build": "encore production --progress"
     },
     "resolutions": {
+        "css-minimizer-webpack-plugin": "^8.0",
         "jspdf": "^4.0",
         "canvg": "^4.0.2",
         "semver": "^7.5.2",

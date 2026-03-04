@@ -7,7 +7,7 @@ __metadata:
 
 "@amorebietakoudala/stimulus-controller-bundle@file:vendor/amorebietakoudala/stimulus-controller-bundle/assets::locator=root-workspace-0b6124%40workspace%3A.":
   version: 0.1.0
-  resolution: "@amorebietakoudala/stimulus-controller-bundle@file:vendor/amorebietakoudala/stimulus-controller-bundle/assets#vendor/amorebietakoudala/stimulus-controller-bundle/assets::hash=090c54&locator=root-workspace-0b6124%40workspace%3A."
+  resolution: "@amorebietakoudala/stimulus-controller-bundle@file:vendor/amorebietakoudala/stimulus-controller-bundle/assets#vendor/amorebietakoudala/stimulus-controller-bundle/assets::hash=704255&locator=root-workspace-0b6124%40workspace%3A."
   dependencies:
     "@eonasdan/tempus-dominus": ^6.2.10
     "@hotwired/stimulus": ^3.0.0
@@ -19,7 +19,18 @@ __metadata:
     select2-bootstrap-5-theme: ^1.3.0
     sweetalert2: 11.4.8
     tableexport.jquery.plugin: ^1.26.0
-  checksum: 12d9471dcd2fc1136424f7a9c0f3a797dd6b7dd690444e7a855a8911897939886dc78b790ddd7e269e48bc2e24cef3d901335ce336e42e45f4a851ad5b6f6b10
+  peerDependencies:
+    "@eonasdan/tempus-dominus": ^6.2.10
+    "@hotwired/stimulus": ^3.0.0
+    "@popperjs/core": ^2.11.8
+    bootstrap: ^5.2.3
+    bootstrap-table: 1.21.1
+    jquery: 3.6.1
+    select2: ^4.1.0-rc.0
+    select2-bootstrap-5-theme: ^1.3.0
+    sweetalert2: 11.4.8
+    tableexport.jquery.plugin: ^1.26.0
+  checksum: b2c9f71a5253e10eba7ef1b85f7456d0f4a47433d853faa62020a55fec85d5a2b2ad404d73178fc750cc4c513a27c0e2e8dbc040b6a78b15950137bf1da6860c
   languageName: node
   linkType: hard
 
@@ -1586,8 +1597,11 @@ __metadata:
 
 "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets::locator=root-workspace-0b6124%40workspace%3A.":
   version: 2.30.0
-  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=276b95&locator=root-workspace-0b6124%40workspace%3A."
-  checksum: 806673bffe250b775d41e5136c1bf1b7857d1aedefe9c25b43716470d1c7fd82c87e3e6523f12038a8a45a38ed83e5ed3b1b6ca3c852d4dd2709839cc74f503d
+  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=06bd21&locator=root-workspace-0b6124%40workspace%3A."
+  peerDependencies:
+    "@hotwired/stimulus": ^3.0.0
+    "@hotwired/turbo": ^7.1.0 || ^8.0
+  checksum: 89dfee6767f27af57e51ec7280cb9bf5185fa18c42023bec3961e3f7210ceb74cd38ba7d6fc0d4870cc663499eca5ce0966ada7db886c792a96267de5dadcf2c
   languageName: node
   linkType: hard
 
@@ -2666,16 +2680,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"css-minimizer-webpack-plugin@npm:^7.0.0":
-  version: 7.0.4
-  resolution: "css-minimizer-webpack-plugin@npm:7.0.4"
+"css-minimizer-webpack-plugin@npm:^8.0":
+  version: 8.0.0
+  resolution: "css-minimizer-webpack-plugin@npm:8.0.0"
   dependencies:
     "@jridgewell/trace-mapping": ^0.3.25
     cssnano: ^7.0.4
     jest-worker: ^30.0.5
     postcss: ^8.4.40
     schema-utils: ^4.2.0
-    serialize-javascript: ^6.0.2
+    serialize-javascript: ^7.0.3
   peerDependencies:
     webpack: ^5.0.0
   peerDependenciesMeta:
@@ -2691,7 +2705,7 @@ __metadata:
       optional: true
     lightningcss:
       optional: true
-  checksum: 93859a1ab8747aefb67d3330d4a1f0d73c15f3a13da6c9396ec9aacce9172f0aa33908a9a1f39e5b5881fac729d020c8b57bd7693d0c0d64d51b1f45646d0075
+  checksum: 655c079decd88173770d2825073237dbd537204b3510b9362dbb0717c679c17340d4d74116acaa031256af09bf799d2b14a21926340f9168c22fbeeda24ab005
   languageName: node
   linkType: hard
 
@@ -5071,15 +5085,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"randombytes@npm:^2.1.0":
-  version: 2.1.0
-  resolution: "randombytes@npm:2.1.0"
-  dependencies:
-    safe-buffer: ^5.1.0
-  checksum: d779499376bd4cbb435ef3ab9a957006c8682f343f14089ed5f27764e4645114196e75b7f6abf1cbd84fd247c0cb0651698444df8c9bf30e62120fbbc52269d6
-  languageName: node
-  linkType: hard
-
 "readdirp@npm:^4.0.1":
   version: 4.1.2
   resolution: "readdirp@npm:4.1.2"
@@ -5310,7 +5315,6 @@ __metadata:
     regenerator-runtime: ^0.13.2
     sass: ^1.32.8
     sass-loader: ^13.2.0
-    serialize-javascript: ^7.0.3
     stimulus: ^2.0.0
     sweetalert2: ^11.23.0
     tableexport.jquery.plugin: ^1.25.0
@@ -5320,13 +5324,6 @@ __metadata:
     websocket-extensions: ^0.1.4
   languageName: unknown
   linkType: soft
-
-"safe-buffer@npm:^5.1.0":
-  version: 5.2.1
-  resolution: "safe-buffer@npm:5.2.1"
-  checksum: b99c4b41fdd67a6aaf280fcd05e9ffb0813654894223afb78a31f14a19ad220bba8aba1cb14eddce1fcfb037155fe6de4e861784eb434f7d11ed58d1e70dd491
-  languageName: node
-  linkType: hard
 
 "safe-regex-test@npm:^1.1.0":
   version: 1.1.0
@@ -5442,19 +5439,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"serialize-javascript@npm:^6.0.2":
-  version: 6.0.2
-  resolution: "serialize-javascript@npm:6.0.2"
-  dependencies:
-    randombytes: ^2.1.0
-  checksum: c4839c6206c1d143c0f80763997a361310305751171dd95e4b57efee69b8f6edd8960a0b7fbfc45042aadff98b206d55428aee0dc276efe54f100899c7fa8ab7
-  languageName: node
-  linkType: hard
-
 "serialize-javascript@npm:^7.0.3":
-  version: 7.0.3
-  resolution: "serialize-javascript@npm:7.0.3"
-  checksum: c54f78f4123663dbca132e89885426fff2ccf20dbb862c14641f1c1cbdb5552f1ce48881cf51496aef563bde8af1765687e87043f194a1f887617ce8a02ff80d
+  version: 7.0.4
+  resolution: "serialize-javascript@npm:7.0.4"
+  checksum: 00a141b57ad3c5efed5499b093c7a7d37237c1980ee2d9475e36c792e2951915550d93be37d10d6e6e20a5bad41177448a3f8135bf30bcb01ff592c13e1f6338
   languageName: node
   linkType: hard
 
@@ -5823,13 +5811,12 @@ __metadata:
   linkType: hard
 
 "terser-webpack-plugin@npm:^5.3.0, terser-webpack-plugin@npm:^5.3.16":
-  version: 5.3.16
-  resolution: "terser-webpack-plugin@npm:5.3.16"
+  version: 5.3.17
+  resolution: "terser-webpack-plugin@npm:5.3.17"
   dependencies:
     "@jridgewell/trace-mapping": ^0.3.25
     jest-worker: ^27.4.5
     schema-utils: ^4.3.0
-    serialize-javascript: ^6.0.2
     terser: ^5.31.1
   peerDependencies:
     webpack: ^5.1.0
@@ -5840,7 +5827,7 @@ __metadata:
       optional: true
     uglify-js:
       optional: true
-  checksum: 4a9ba15a0917fa0de565f6d722cac1c5291fbb517a9afe3a2cce7edf851f0e02ee44ea45e2547aeb4fb7d599df3f1ccb04ba405879839d5425481c7180655679
+  checksum: 182631872b82c98240b37af150d289178ac9891892cc04d092661760e702e24428dac6f9285c6dd40b0a15ca508979470d5c498f4e350a5ec79a7df5463aa492
   languageName: node
   linkType: hard
 
