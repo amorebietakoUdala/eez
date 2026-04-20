@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Validator\IsValidDNI;
 use App\Repository\QuotaRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -23,84 +24,86 @@ class Quota
      */
     #[ORM\Column(type: 'string', length: 10, nullable: false)]
     #[Assert\NotBlank(groups: ['saveQuota'])]
-    private $dni;
+    private string $dni;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Assert\NotBlank(groups: ['saveQuota'])]
-    private $name;
+    private string $name;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Assert\NotBlank(groups: ['saveQuota'])]
-    private $surname1;
+    private string $surname1;
 
     #[ORM\Column(type: 'string', length: 255, nullable: false)]
     #[Assert\NotBlank(groups: ['saveQuota'])]
-    private $surname2;
+    private string $surname2;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
+    #[Assert\NotBlank(groups: ['saveQuota'])]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $incomeAndAid;
+    private ?string $incomeAndAid = null;
 
     #[ORM\Column(type: 'boolean', options: ['default' => 0])]
-    private $pensioner;
+    private bool $pensioner;
 
     #[ORM\Column(type: 'string', length: 1, nullable: false)]
     #[Assert\NotBlank(groups: ['saveQuota'])]
-    private $sex;
+    private string $sex;
 
     #[ORM\Column(type: 'boolean', options: ['default' => 0])]
-    private $discapacity65;
+    private bool $discapacity65;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0])]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $heritage;
+    private ?string $heritage = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0])]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $totalHouseholdIncome;
+    #[Assert\NotBlank(groups: ['saveQuota'])]
+    private ?string $totalHouseholdIncome = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2, options: ['default' => 0], nullable: true)]
-    private $housingExpediture;
+    private ?string $housingExpediture = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
-    private $equityIncrease;
+    private ?string $equityIncrease = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    private $dependencyGrade;
+    private ?int $dependencyGrade = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $housingBonus;
+    private ?string $housingBonus = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $dependencyBonus;
+    private ?string $dependencyBonus = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     #[Assert\PositiveOrZero(groups: ['saveQuota', 'calculateQuota'])]
     #[Assert\NotBlank(groups: ['calculateQuota'])]
-    private $numberOfHours;
+    private ?string $numberOfHours = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
-    private $monthlyContribution;
+    private ?string $monthlyContribution = null;
 
     #[ORM\Column(type: 'decimal', precision: 12, scale: 2)]
     #[Assert\PositiveOrZero(groups: ['saveQuota'])]
-    private $pricePerHour;
+    private ?string $pricePerHour = null;
 
     #[ORM\Column(type: 'datetime')]
-    private $createDate;
+    private ?\DateTime $createDate = null;
 
     #[ORM\ManyToOne(targetEntity: 'User', cascade: ['persist'])]
     #[ORM\JoinColumn(referencedColumnName: 'id')]
-    private $createdBy;
+    private ?User $createdBy = null;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $lastModificationDate;
+    private ?\DateTime $lastModificationDate = null;
 
     #[ORM\ManyToOne(targetEntity: 'User', cascade: ['persist'])]
     #[ORM\JoinColumn(referencedColumnName: 'id')]
-    private $modifiedBy;
+    private ?User $modifiedBy = null;
 
     #[ORM\OneToMany(targetEntity: 'Member', mappedBy: 'quota', orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection|array $members;

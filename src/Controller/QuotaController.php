@@ -39,7 +39,8 @@ class QuotaController extends BaseController
         $user = $this->getUser();
 
         $form = $this->createForm(QuotaType::class, new Quota(), [
-            'validation_groups' => ['saveQuota', 'calculateQuota'],
+#            'validation_groups' => ['saveQuota', 'calculateQuota'],
+            'validation_groups' => ['saveQuota'],
         ]);
 
         $form->handleRequest($request);
@@ -64,13 +65,14 @@ class QuotaController extends BaseController
             $this->em->flush();
 
             $this->addFlash('success', 'messages.quotaSaved');
-            $form = $this->createForm(QuotaType::class, new Quota());
+            $this->redirectToRoute('quota_edit', ['quota' => $data->getId()]);
+            // $form = $this->createForm(QuotaType::class, new Quota());
 
-            return $this->render('quota/edit.html.twig', [
-                'form' => $form,
-                'readonly' => false,
-                'new' => true,
-            ]);
+            // return $this->render('quota/edit.html.twig', [
+            //     'form' => $form,
+            //     'readonly' => false,
+            //     'new' => true,
+            // ]);
         }
 
         return $this->render('quota/edit.html.twig', [

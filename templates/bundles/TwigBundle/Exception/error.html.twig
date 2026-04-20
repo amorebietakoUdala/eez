@@ -4,10 +4,10 @@
 {% block menu %}{% endblock %}
 
 {% block body %}
-<div class="container alert alert-danger">
-    <h1>{{ 'http.status.default.title' | trans }}</h1>
-    {{ 'http.status.default.description' | trans({ '%statusCode%' : statusCode, '%statusText%' : statusText }) | raw }}<br>
-    {{ 'http.status.default.aditional' | trans({ '%contactEmailDefault%': contactEmailDefault }) | raw  }}<br>
-    <a class="btn btn-primary" href="{{ path('app_home') }}">{{ 'btn.returnToMainPage' | trans }}</a>
-</div>
+    <div class="container alert alert-danger">
+        <h1>{{ 'http.status.default.title' | trans({}, 'http-errors') }}</h1>
+        {{ 'http.status.default.description' | trans({ '%statusCode%' : statusCode, '%statusText%' : statusText }, 'http-errors') | raw }}<br>
+        {{ 'http.status.default.aditional' | trans({ '%contactEmailDefault%': contactEmailDefault }, 'http-errors') | raw  }}<br>
+        <a class="btn btn-primary" href="{{ path('app_home') }}">{{ 'btn.returnToMainPage' | trans({}, 'http-errors') }}</a>
+    </div>
 {% endblock %}

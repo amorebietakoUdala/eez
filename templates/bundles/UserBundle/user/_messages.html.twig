@@ -1,6 +1,6 @@
-{% for msg in app.session.flashBag.get('success') %}
+	{% for msg in app.session.flashBag.get('success') %}
 	<div class="alert alert-success">
-		{{ msg | trans({}, domain|default('messages'), app.request.locale) }}
+		{{ msg | trans({}, 'user_bundle')}}
 	</div>
 {% endfor %}
 {% for msg in app.session.flashBag.get('error') %}
@@ -8,12 +8,12 @@
 		{% if message is defined %}
 			{{ msg | trans({'%message%' : message},"messages", app.request.locale) }}
 		{% else %}
-			{{ msg | trans({}, domain|default('messages'), app.request.locale) }}
+			{{ msg | trans({}, 'user_bundle') }}
 		{% endif %}
 	</div>
 {% endfor %}
 {% for msg in app.session.flashBag.get('warning') %}
 	<div class="alert alert-warning">
-		{{ msg | trans({}, domain|default('messages'), app.request.locale) }}
+		{{ msg | trans({}, 'user_bundle') | capitalize }}
 	</div>
 {% endfor %}

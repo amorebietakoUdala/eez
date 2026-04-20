@@ -50,8 +50,6 @@ class QuotaType extends AbstractType
                 'label' => 'quota.pensioner',
             ])
             ->add('incomeAndAid', null, [
-                'constraints' => [
-                ],
                 'label' => 'quota.incomeAndAid',
             ])
             ->add('heritage', null, [
