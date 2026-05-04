@@ -1596,12 +1596,12 @@ __metadata:
   linkType: hard
 
 "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets::locator=root-workspace-0b6124%40workspace%3A.":
-  version: 2.30.0
-  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=06bd21&locator=root-workspace-0b6124%40workspace%3A."
+  version: 2.34.0
+  resolution: "@symfony/ux-turbo@file:vendor/symfony/ux-turbo/assets#vendor/symfony/ux-turbo/assets::hash=7fa011&locator=root-workspace-0b6124%40workspace%3A."
   peerDependencies:
     "@hotwired/stimulus": ^3.0.0
     "@hotwired/turbo": ^7.1.0 || ^8.0
-  checksum: 89dfee6767f27af57e51ec7280cb9bf5185fa18c42023bec3961e3f7210ceb74cd38ba7d6fc0d4870cc663499eca5ce0966ada7db886c792a96267de5dadcf2c
+  checksum: 6fa94c26e7e83059c803df3e62b9433f7e301f451851592f193cb98c2e3abe2733e15c9b061042a1ef571e105c33964b45f1de7bcde2448abb7262b129c7892b
   languageName: node
   linkType: hard
 
@@ -6014,12 +6014,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.3.0":
-  version: 8.3.2
-  resolution: "uuid@npm:8.3.2"
+"uuid@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "uuid@npm:14.0.0"
   bin:
-    uuid: dist/bin/uuid
-  checksum: 5575a8a75c13120e2f10e6ddc801b2c7ed7d8f3c8ac22c7ed0c7b2ba6383ec0abda88c905085d630e251719e0777045ae3236f04c812184b7c765f63a70e58df
+    uuid: dist-node/bin/uuid
+  checksum: 08608584a79e987cdae000fa8eb724fa51dd8aafc136cd9fa9a8c87d07b246c56eec5fd9027fdb3e49a863eedf758bc19e325909ce281955c7a027fed67dc89e
   languageName: node
   linkType: hard
 
