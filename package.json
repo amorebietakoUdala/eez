@@ -47,7 +47,7 @@
         "canvg": "^4.0.2",
         "semver": "^7.5.2",
         "xlsx": "https://cdn.sheetjs.com/xlsx-0.19.3/xlsx-0.19.3.tgz",
-        "postcss": "^8.4.31",
+        "postcss": "^8.5",
         "jquery": "3.6.1"
     },
     "overrides": {
